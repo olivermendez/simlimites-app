@@ -1,18 +1,16 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 
 import '../../widgets/widgets.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class MySimPage extends StatelessWidget {
+  const MySimPage({Key? key}) : super(key: key);
 
-  static const String routeName = '/home';
+  static const String routeName = '/mysim';
 
   static Route route() {
     return MaterialPageRoute(
       settings: const RouteSettings(name: routeName),
-      builder: (_) => const HomePage(),
+      builder: (_) => const MySimPage(),
     );
   }
 
@@ -20,7 +18,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: 'HomePage',
+        title: 'MySimPage',
       ),
       bottomNavigationBar: CustomNavigationBar(),
     );

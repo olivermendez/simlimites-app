@@ -9,3 +9,6 @@ export 'login/login_page.dart';
 
 //sign up
 export 'signup/signup_page.dart';
+
+//splash screen
+export 'splash/splash_page.dart';
