@@ -16,9 +16,10 @@ class AccountPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text("hola"),
+    return Scaffold(
+      appBar: CustomAppBar(title: 'Account'),
+      body: Center(
+        child: Text("Account"),
       ),
     );
   }

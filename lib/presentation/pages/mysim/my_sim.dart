@@ -17,23 +17,26 @@ class MySimPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Lottie.network(
-          'https://assets6.lottiefiles.com/packages/lf20_hMl7FE.json',
-        ),
-        const Padding(
-          padding: EdgeInsets.all(30.0),
-          child: Center(
-              child: Text(
-            'No tienes ningùn servicio',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          )),
-        ),
-      ],
+    return Scaffold(
+      appBar: const CustomAppBar(title: 'My esim'),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Lottie.network(
+            'https://assets6.lottiefiles.com/packages/lf20_hMl7FE.json',
+          ),
+          const Padding(
+            padding: EdgeInsets.all(30.0),
+            child: Center(
+                child: Text(
+              'No tienes ningùn servicio',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            )),
+          ),
+        ],
 
-      //bottomNavigationBar: CustomNavigationBar(),
+        //bottomNavigationBar: CustomNavigationBar(),
+      ),
     );
   }
 }
