@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:simlimites/presentation/widgets/widgets.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -16,8 +17,10 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Timer(const Duration(seconds: 2),
-        () => Navigator.popAndPushNamed(context, '/home'));
+    Timer(
+        const Duration(seconds: 2),
+        () => MaterialPageRoute(
+            builder: (context) => const CustomNavigationBar()));
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
