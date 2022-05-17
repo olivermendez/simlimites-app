@@ -11,7 +11,7 @@ export 'login/login_page.dart';
 export 'signup/signup_page.dart';
 
 //splash screen
-export 'splash/splash_page.dart';
+export 'onboarding_pages/onboarding.dart';
 
 //account
 export 'account/account_page.dart';

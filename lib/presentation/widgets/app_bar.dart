@@ -7,27 +7,12 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      centerTitle: false,
-      backgroundColor: Colors.white,
-      elevation: 5,
-      title: Row(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 20),
-            child: Text(
-              title,
-              style: TextStyle(color: Colors.black, fontSize: 30),
-            ),
-          ),
-        ],
-      ),
-    );
+    return AppBar();
   }
 
   @override
   // TODO: implement preferredSize
-  Size get preferredSize => const Size.fromHeight(100);
+  Size get preferredSize => const Size.fromHeight(50);
 }
 
 class CustomAppBarStore extends StatelessWidget with PreferredSizeWidget {
@@ -65,5 +50,5 @@ class CustomAppBarStore extends StatelessWidget with PreferredSizeWidget {
 
   @override
   // TODO: implement preferredSize
-  Size get preferredSize => const Size.fromHeight(120);
+  Size get preferredSize => const Size.fromHeight(50);
 }

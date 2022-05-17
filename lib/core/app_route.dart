@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:simlimites/presentation/pages/account/account_page.dart';
 import 'package:simlimites/presentation/pages/mysim/my_sim.dart';
-import 'package:simlimites/presentation/pages/splash/splash_page.dart';
+//import 'package:simlimites/presentation/pages/splash/splash_page.dart';
 import '../presentation/pages/screens.dart';
 
 class AppRouter {
