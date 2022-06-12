@@ -7,15 +7,15 @@ class OnboardingInfo {
 
 final List<OnboardingInfo> onboard_data = [
   OnboardingInfo(
-      title: "titulo 1",
+      title: "slide 1",
       description: "description 1",
       image: 'assets/logotipo.png'),
   OnboardingInfo(
-      title: "titulo 2",
+      title: "slide 2",
       description: "description 2",
       image: 'assets/logotipo.png'),
   OnboardingInfo(
-      title: "titulo 3",
+      title: "slide 3",
       description: "description 3",
       image: 'assets/logotipo.png'),
 ];

@@ -5,6 +5,7 @@ import 'package:simlimites/presentation/pages/onboarding_pages/onboard_data.dart
 import 'package:simlimites/presentation/widgets/widgets.dart';
 
 import '../home/home_page.dart';
+import '../login/login_page.dart';
 
 class SplashScreen extends StatefulWidget {
   SplashScreen({Key? key}) : super(key: key);
@@ -63,7 +64,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
           if (_pageController.page == onboard_data.length - 1) {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const HomePage()));
+                MaterialPageRoute(builder: (context) => const LoginPage()));
           }
         },
         child: const Icon(
