@@ -1,35 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:simlimites/presentation/pages/home/home_page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
 
-  static const String routeName = '/login';
-
-  static Route route() {
-    return MaterialPageRoute(
-      settings: const RouteSettings(name: routeName),
-      builder: (_) => const LoginPage(),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        //crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Padding(
-            padding: EdgeInsets.only(top: 100, bottom: 40),
-            child: Center(
-              child: IconContainer(),
+      body: Container(
+        //toda la pantalla
+        width: double.infinity,
+        height: double.infinity,
+
+        child: Column(
+          //crossAxisAlignment: CrossAxisAlignment.start,
+          children: const [
+            IconContainer(),
+            Text(
+              "Accede a tu cuenta",
+              style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 20,
+                  color: Color.fromARGB(255, 40, 186, 254)),
             ),
-          ),
-          const Text("Login page"),
-          Padding(
-            padding: const EdgeInsets.only(left: 25, right: 25, top: 30),
-            child: LoginForm(),
-          )
-        ],
+            Padding(
+              padding: EdgeInsets.only(left: 25, right: 25, top: 30),
+              child: LoginForm(),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -40,28 +39,31 @@ class IconContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      width: 100,
-      height: 100,
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(20),
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.black26,
-              blurRadius: 10,
-            )
-          ]),
-      padding: const EdgeInsets.all(20),
-      child: const SizedBox(
-        height: 200,
-        width: 200,
-        child: Image(
-          width: 40,
-          height: 40,
-          image: AssetImage(
-            'assets/Imagotipo.png',
+    return Padding(
+      padding: const EdgeInsets.only(top: 70, bottom: 30),
+      child: Container(
+        alignment: Alignment.center,
+        width: 80,
+        height: 80,
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: const [
+              BoxShadow(
+                color: Color.fromARGB(44, 0, 0, 0),
+                blurRadius: 5,
+              )
+            ]),
+        padding: const EdgeInsets.all(20),
+        child: const SizedBox(
+          height: 200,
+          width: 200,
+          child: Image(
+            width: 40,
+            height: 40,
+            image: AssetImage(
+              'assets/Imagotipo.png',
+            ),
           ),
         ),
       ),
@@ -70,7 +72,7 @@ class IconContainer extends StatelessWidget {
 }
 
 class LoginForm extends StatefulWidget {
-  LoginForm({Key? key}) : super(key: key);
+  const LoginForm({Key? key}) : super(key: key);
 
   @override
   State<LoginForm> createState() => _LoginFormState();
@@ -169,7 +171,12 @@ class _LoginFormState extends State<LoginForm> {
                   });
                 }),
 
-            ElevatedButton(onPressed: () {}, child: const Text("Login Now")),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomePage()));
+                },
+                child: const Text("Login Now")),
             const SizedBox(
               height: 10,
             ),
