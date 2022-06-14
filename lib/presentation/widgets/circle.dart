@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 class Circle extends StatelessWidget {
   final double size;
-  const Circle({Key? key, required this.size})
+  final List<Color> colors;
+  const Circle({Key? key, required this.size, required this.colors})
       : assert(size > 0),
+        assert(colors.length >= 2),
         super(key: key);
 
   @override
@@ -12,7 +14,12 @@ class Circle extends StatelessWidget {
       width: size,
       height: size,
       decoration: BoxDecoration(
-        color: Colors.red,
+        gradient: LinearGradient(
+            colors: colors,
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter),
+        // para crear el circulo
+        shape: BoxShape.circle,
       ),
     );
   }

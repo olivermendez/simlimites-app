@@ -1,34 +1,67 @@
 import 'package:flutter/material.dart';
 import 'package:simlimites/presentation/pages/home/home_page.dart';
+import 'package:simlimites/presentation/widgets/circle.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  @override
   Widget build(BuildContext context) {
+    //conocer la dimension de la pantalla actual
+    final size = MediaQuery.of(context).size;
+
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         //toda la pantalla
         width: double.infinity,
         height: double.infinity,
 
-        child: Column(
-          //crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            IconContainer(),
-            Text(
-              "Accede a tu cuenta",
-              style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 20,
-                  color: Color.fromARGB(255, 40, 186, 254)),
+        child: Stack(children: [
+          Positioned(
+            top: -100,
+            left: -50,
+            child: Circle(
+              size: 230,
+              colors: const [
+                Color.fromARGB(255, 40, 156, 254),
+                Color.fromARGB(255, 40, 186, 254),
+              ],
             ),
-            Padding(
-              padding: EdgeInsets.only(left: 25, right: 25, top: 30),
-              child: LoginForm(),
-            )
-          ],
-        ),
+          ),
+          Positioned(
+            top: -100,
+            right: -50,
+            child: Circle(
+              size: 300,
+              colors: const [
+                Color.fromARGB(255, 40, 186, 254),
+                Color.fromARGB(255, 249, 215, 21),
+              ],
+            ),
+          ),
+          Column(
+            //crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              IconContainer(),
+              Text(
+                "Accede a tu cuenta",
+                style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 20,
+                    color: Color.fromARGB(255, 40, 186, 254)),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 25, right: 25, top: 30),
+                child: LoginForm(),
+              )
+            ],
+          ),
+        ]),
       ),
     );
   }
@@ -54,7 +87,7 @@ class IconContainer extends StatelessWidget {
                 blurRadius: 5,
               )
             ]),
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(5),
         child: const SizedBox(
           height: 200,
           width: 200,
@@ -162,30 +195,26 @@ class _LoginFormState extends State<LoginForm> {
               height: 12,
             ),
 
-            CheckboxListTile(
-                title: const Text("Remember me"),
-                value: _rememberme,
-                onChanged: (value) {
-                  setState(() {
-                    _rememberme = value!;
-                  });
-                }),
-
             ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: const Color.fromARGB(255, 40, 186, 254),
+                  elevation: 0,
+                ),
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => HomePage()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomePage()));
                 },
-                child: const Text("Login Now")),
-            const SizedBox(
-              height: 10,
-            ),
+                child: const Text(
+                  "Entrar",
+                )),
 
             TextButton(
                 onPressed: () {
                   // Navigator.pushNamed(context, 'opt-verify');
                 },
-                child: const Text("Are you new user ?, Register Now"))
+                child: const Text("¿New user? Register Now"))
           ],
         ),
       ),
