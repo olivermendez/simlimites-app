@@ -33,6 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   @override
+  // ignore: must_call_super
   void dispose() {
     _pageController.dispose();
     super.initState();
@@ -76,14 +77,16 @@ class _SplashScreenState extends State<SplashScreen> {
 }
 
 class ScreensOnBoard extends StatelessWidget {
-  const ScreensOnBoard(
-      {Key? key,
-      required this.title,
-      required this.image,
-      required this.description})
-      : super(key: key);
+  const ScreensOnBoard({
+    Key? key,
+    required this.title,
+    required this.image,
+    required this.description,
+  }) : super(key: key);
 
-  final title, image, description;
+  final String title;
+  final String image;
+  final String description;
 
   @override
   Widget build(BuildContext context) {
@@ -103,10 +106,9 @@ class ScreensOnBoard extends StatelessWidget {
           Text(
             title,
             textAlign: TextAlign.center,
-            style: Theme.of(context)
-                .textTheme
-                .headline5!
-                .copyWith(fontWeight: FontWeight.w500),
+            style: Theme.of(context).textTheme.headline5!.copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
           )
         ],
       ),

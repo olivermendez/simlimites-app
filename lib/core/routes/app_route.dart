@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:simlimites/presentation/pages/account/account_page.dart';
-import 'package:simlimites/presentation/pages/mysim/my_sim.dart';
-//import 'package:simlimites/presentation/pages/splash/splash_page.dart';
-import '../presentation/pages/screens.dart';
+import '../../presentation/pages/screens.dart';
 
 class AppRouter {
   static Route onGenerateRoute(RouteSettings settings) {
+    // ignore: avoid_print
     print('This is route ${settings.name}');
 
     switch (settings.name) {
@@ -27,9 +25,13 @@ class AppRouter {
 
   static Route _errorRoute() {
     return MaterialPageRoute(
-        settings: RouteSettings(name: '/error'),
+        settings: const RouteSettings(name: '/error'),
         builder: (_) => Scaffold(
-              appBar: AppBar(title: Text("Error Page")),
+              appBar: AppBar(
+                title: const Text(
+                  "Error Page",
+                ),
+              ),
             ));
   }
 }
