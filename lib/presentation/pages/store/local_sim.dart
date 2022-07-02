@@ -34,7 +34,7 @@ class _LocalSimDisplayState extends State<LocalSimDisplay> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => ProductPage(
-                    characteristics: ["paises 1", "pais 2"],
+                    coverage: localSim.coverage,
                     image: localSim.image,
                     titleCountry: localSim.productName,
                     datas: localSim.planes,
