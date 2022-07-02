@@ -15,7 +15,6 @@ class _LoginPageState extends State<LoginPage> {
     final _usernameController = TextEditingController();
     final _passwordController = TextEditingController();
     //conocer la dimension de la pantalla actual
-
     //final size = MediaQuery.of(context).size;
 
     return Scaffold(
