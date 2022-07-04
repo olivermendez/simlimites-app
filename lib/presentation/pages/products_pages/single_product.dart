@@ -125,6 +125,7 @@ class _ProductPageState extends State<ProductPage> {
                     );
                   },
                   child: Card(
+                    elevation: 0,
                     child: ListTile(
                       title: Text(
                         single.gbCount,

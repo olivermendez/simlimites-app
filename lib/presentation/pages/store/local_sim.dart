@@ -43,14 +43,15 @@ class _LocalSimDisplayState extends State<LocalSimDisplay> {
               );
             },
             child: Card(
+              elevation: 0,
               child: ListTile(
                 trailing: const Icon(Icons.arrow_forward),
                 leading: ConstrainedBox(
                     constraints: const BoxConstraints(
-                      minWidth: 50,
-                      minHeight: 50,
-                      maxWidth: 50,
-                      maxHeight: 50,
+                      minWidth: 30,
+                      minHeight: 30,
+                      maxWidth: 30,
+                      maxHeight: 30,
                     ),
                     child: FadeInImage(
                       placeholder: const AssetImage('assets/loading.gif'),
