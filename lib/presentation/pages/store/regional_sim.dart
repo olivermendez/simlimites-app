@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:simlimites/models/sim/sim_models.dart';
 import 'package:simlimites/models/sim/sim_regional_models.dart';
 
-import '../products_pages/single_product.dart';
-
 class RegionalSimDisplay extends StatefulWidget {
-  RegionalSimDisplay({Key? key}) : super(key: key);
+  const RegionalSimDisplay({Key? key}) : super(key: key);
 
   @override
   State<RegionalSimDisplay> createState() => _RegionalSimDisplayState();

@@ -16,6 +16,7 @@ class _LocalSimDisplayState extends State<LocalSimDisplay> {
 
   @override
   Widget build(BuildContext context) {
+    //TODO! QUITAR ESTO
     // ignore: unused_local_variable
     for (SimCountries element in data) {
       local = data.where((element) => element.productType == 'local').toList();
@@ -45,13 +46,16 @@ class _LocalSimDisplayState extends State<LocalSimDisplay> {
             child: Card(
               elevation: 0,
               child: ListTile(
-                trailing: const Icon(Icons.arrow_forward),
+                trailing: const Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  size: 18,
+                ),
                 leading: ConstrainedBox(
                     constraints: const BoxConstraints(
                       minWidth: 30,
                       minHeight: 30,
-                      maxWidth: 30,
-                      maxHeight: 30,
+                      maxWidth: 40,
+                      maxHeight: 40,
                     ),
                     child: FadeInImage(
                       placeholder: const AssetImage('assets/loading.gif'),

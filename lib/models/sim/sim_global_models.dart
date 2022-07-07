@@ -42,7 +42,7 @@ class SimGlobalModel extends Equatable {
         productId: "global1",
         productName: "Global 1",
         shortDescription: "shortDescription",
-        productType: "regional",
+        productType: "global",
         characteristics: "characteristics",
         coverage: [
           CoverageGlobal(name: "pais 1", image: "assets/regional/pais1"),
@@ -66,7 +66,7 @@ class SimGlobalModel extends Equatable {
         productId: "global2",
         productName: "Global 2",
         shortDescription: "shortDescription",
-        productType: "regional",
+        productType: "global",
         characteristics: "characteristics",
         coverage: [
           CoverageGlobal(name: "pais 1", image: "assets/regional/pais1"),
