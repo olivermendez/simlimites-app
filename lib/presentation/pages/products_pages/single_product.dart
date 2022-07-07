@@ -13,7 +13,7 @@ class ProductPage extends StatefulWidget {
   final List<PlanData> datas;
   final String titleCountry;
   final String image;
-  List<String> coverage;
+  List<Coverage> coverage;
 
   @override
   State<ProductPage> createState() => _ProductPageState();
@@ -32,15 +32,21 @@ class _ProductPageState extends State<ProductPage> {
             child: Icon(Icons.favorite),
           ),
         ],
-        backgroundColor: Colors.purple,
+        //backgroundColor: Colors.purple,
       ),
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
-          const Text(
-            "Selecciona el plan de data",
-            textAlign: TextAlign.end,
+          /*
+          Container(
+            decoration: BoxDecoration(
+              color: Color.fromARGB(255, 1, 90, 122),
+            ),
+            height: 250,
+            width: MediaQuery.of(context).size.width,
+            child: Image.asset('assets/ship.png'),
           ),
+          */
           Expanded(
             child: ListView.builder(
               itemCount: widget.datas.length,
@@ -48,81 +54,7 @@ class _ProductPageState extends State<ProductPage> {
                 final single = widget.datas[index];
                 return GestureDetector(
                   onTap: () {
-                    showModalBottomSheet(
-                      isDismissible: true,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(10.0),
-                          topRight: Radius.circular(10.0),
-                        ),
-                      ),
-                      context: context,
-                      builder: (context) {
-                        return Column(
-                          children: [
-                            ListTile(
-                              leading: const Icon(Icons.wifi),
-                              title: const Text(
-                                'Trafico de internet',
-                              ),
-                              trailing: Text(
-                                single.gbCount,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            ListTile(
-                              leading: const Icon(Icons.calendar_month),
-                              title: const Text(
-                                'Duración',
-                              ),
-                              trailing: Text(
-                                single.days + " días",
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            const Divider(),
-                            ListTile(
-                              leading: ConstrainedBox(
-                                  constraints: const BoxConstraints(
-                                    minWidth: 40,
-                                    minHeight: 40,
-                                    maxWidth: 40,
-                                    maxHeight: 40,
-                                  ),
-                                  child: FadeInImage(
-                                    placeholder:
-                                        const AssetImage('assets/loading.gif'),
-                                    image: AssetImage(widget.image),
-                                  )),
-                              title: const Text(
-                                'Zonas con covertura',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            ListTile(
-                              title: Text(widget.coverage.toString()),
-                            ),
-                            const Divider(),
-                            const SizedBox(
-                              height: 120,
-                            ),
-                            FloatingActionButton.extended(
-                              icon: const Icon(Icons.shopping_bag_outlined),
-                              elevation: 1,
-                              onPressed: () {},
-                              label: Text(
-                                  "Comprar plan para USD${single.price}.00"),
-                            )
-                          ],
-                        );
-                      },
-                    );
+                    customModalBottomSheet(context, single);
                   },
                   child: Card(
                     elevation: 0,
@@ -146,6 +78,95 @@ class _ProductPageState extends State<ProductPage> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Future<dynamic> customModalBottomSheet(
+    BuildContext context,
+    PlanData single,
+  ) {
+    return showModalBottomSheet(
+      //isScrollControlled: true,
+      isDismissible: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(10.0),
+          topRight: Radius.circular(10.0),
+        ),
+      ),
+      context: context,
+      builder: (context) {
+        return SizedBox(
+          child: Column(
+            children: [
+              informationWidget(
+                'Cobertura',
+                widget.titleCountry,
+                Icons.public,
+              ),
+              informationWidget(
+                'Datos',
+                single.gbCount,
+                Icons.wifi,
+              ),
+              informationWidget(
+                'Duración',
+                single.days + " días",
+                Icons.calendar_month,
+              ),
+              const Divider(),
+              const ListTile(
+                title: Text(
+                  'Zonas con covertura',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Expanded(
+                child: _converturaWidget(widget.coverage),
+              ),
+              FloatingActionButton.extended(
+                icon: const Icon(Icons.shopping_bag_outlined),
+                elevation: 1,
+                onPressed: () {},
+                label: Text("Comprar plan para USD${single.price}.00"),
+              ),
+              const Divider(),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  ListTile informationWidget(
+    String concept,
+    String result,
+    IconData icon,
+  ) {
+    return ListTile(
+      leading: Icon(icon),
+      title: Text(
+        concept,
+      ),
+      trailing: Text(
+        result,
+        style: const TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  }
+
+  _converturaWidget(List<Coverage> country) {
+    return Container(
+      child: ListView.builder(
+        itemCount: country.length,
+        itemBuilder: (context, index) {
+          return Text("    " + country[index].name);
+        },
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../models/sim/sim_models.dart';
+import '../../widgets/country_image_widget.dart';
 import '../products_pages/single_product.dart';
 
 class LocalSimDisplay extends StatefulWidget {
@@ -16,11 +17,7 @@ class _LocalSimDisplayState extends State<LocalSimDisplay> {
 
   @override
   Widget build(BuildContext context) {
-    //TODO! QUITAR ESTO
-    // ignore: unused_local_variable
-    for (SimCountries element in data) {
-      local = data.where((element) => element.productType == 'local').toList();
-    }
+    local = data.where((element) => element.productType == 'local').toList();
     int localCount = local.length;
 
     return ListView.builder(
@@ -50,17 +47,7 @@ class _LocalSimDisplayState extends State<LocalSimDisplay> {
                   Icons.arrow_forward_ios_rounded,
                   size: 18,
                 ),
-                leading: ConstrainedBox(
-                    constraints: const BoxConstraints(
-                      minWidth: 30,
-                      minHeight: 30,
-                      maxWidth: 40,
-                      maxHeight: 40,
-                    ),
-                    child: FadeInImage(
-                      placeholder: const AssetImage('assets/loading.gif'),
-                      image: AssetImage(localSim.image),
-                    )),
+                leading: countryImageWidget(localSim),
                 title: Text(localSim.productName),
                 subtitle: Text(localSim.productType),
               ),

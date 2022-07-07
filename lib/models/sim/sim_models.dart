@@ -8,8 +8,9 @@ class SimCountries extends Equatable {
   final String productType;
 
   final List<String> characteristics;
-  final List<String> coverage;
+  final List<Coverage> coverage;
   final String image;
+  final String? cardImage;
   final List<PlanData> planes;
 
   const SimCountries({
@@ -21,6 +22,7 @@ class SimCountries extends Equatable {
     required this.characteristics,
     required this.coverage,
     required this.image,
+    this.cardImage,
     required this.planes,
   });
 
@@ -43,17 +45,18 @@ class SimCountries extends Equatable {
       productName: 'Estados Unidos',
       shortDescription: 'shortDescription',
       fullDescription: 'fullDescription',
+      cardImage: 'assets/ship.png',
       productType: 'local',
       characteristics: [
         'Llamadas ilimitadas en país de cobertura',
         'Datos ilimitados en 4G LTE (sin degradación',
       ],
       coverage: [
-        'Estados Unidos',
-        'Alaska',
-        'Hawai',
-        'Puerto Rico',
-        'Islas Vírgenes de EE. UU.'
+        Coverage(image: '/path', name: 'Estados Unidos'),
+        Coverage(image: '/path', name: 'Alaska'),
+        Coverage(image: '/path', name: 'Hawai'),
+        Coverage(image: '/path', name: 'Islas Vírgenes de EE. UU. '),
+        Coverage(image: '/path', name: 'Puerto Rico'),
       ],
       image: 'assets/usa.png',
       planes: [
@@ -70,11 +73,18 @@ class SimCountries extends Equatable {
       shortDescription: 'shortDescription',
       fullDescription: 'fullDescription',
       productType: 'local',
+      cardImage: 'assets/ship.png',
       characteristics: [
         'Llamadas ilimitadas en país de cobertura',
         'Datos ilimitados en 4G LTE (sin degradación',
       ],
-      coverage: [],
+      coverage: [
+        Coverage(image: '/path', name: 'Estados Unidos'),
+        Coverage(image: '/path', name: 'Alaska'),
+        Coverage(image: '/path', name: 'Hawai'),
+        Coverage(image: '/path', name: 'Islas Vírgenes de EE. UU. '),
+        Coverage(image: '/path', name: 'Puerto Rico'),
+      ],
       image: 'assets/colombia.png',
       planes: [
         PlanData(price: 23, currentyType: 'USD', days: '5', gbCount: '5GB'),
@@ -90,11 +100,18 @@ class SimCountries extends Equatable {
       shortDescription: 'shortDescription',
       fullDescription: 'fullDescription',
       productType: 'local',
+      cardImage: 'assets/ship.png',
       characteristics: [
         'Llamadas ilimitadas en país de cobertura',
         'Datos ilimitados en 4G LTE (sin degradación)',
       ],
-      coverage: [],
+      coverage: [
+        Coverage(image: '/path', name: 'Estados Unidos'),
+        Coverage(image: '/path', name: 'Alaska'),
+        Coverage(image: '/path', name: 'Hawai'),
+        Coverage(image: '/path', name: 'Islas Vírgenes de EE. UU. '),
+        Coverage(image: '/path', name: 'Puerto Rico'),
+      ],
       image: 'assets/canada.png',
       planes: [
         PlanData(price: 23, currentyType: 'USD', days: '5', gbCount: '5GB'),
@@ -110,11 +127,18 @@ class SimCountries extends Equatable {
       shortDescription: 'shortDescription',
       fullDescription: 'fullDescription',
       productType: 'local',
+      cardImage: 'assets/ship.png',
       characteristics: [
         'Llamadas ilimitadas en país de cobertura',
         'Datos ilimitados en 4G LTE (sin degradación)',
       ],
-      coverage: [],
+      coverage: [
+        Coverage(image: '/path', name: 'Estados Unidos'),
+        Coverage(image: '/path', name: 'Alaska'),
+        Coverage(image: '/path', name: 'Hawai'),
+        Coverage(image: '/path', name: 'Islas Vírgenes de EE. UU. '),
+        Coverage(image: '/path', name: 'Puerto Rico'),
+      ],
       image: 'assets/mexico.png',
       planes: [
         PlanData(price: 23, currentyType: 'USD', days: '5', gbCount: '5GB'),
@@ -130,11 +154,18 @@ class SimCountries extends Equatable {
       shortDescription: 'shortDescription',
       fullDescription: 'fullDescription',
       productType: 'local',
+      cardImage: 'assets/ship.png',
       characteristics: [
         'Llamadas ilimitadas en país de cobertura',
         'Datos ilimitados en 4G LTE (sin degradación)',
       ],
-      coverage: [],
+      coverage: [
+        Coverage(image: '/path', name: 'Estados Unidos'),
+        Coverage(image: '/path', name: 'Alaska'),
+        Coverage(image: '/path', name: 'Hawai'),
+        Coverage(image: '/path', name: 'Islas Vírgenes de EE. UU. '),
+        Coverage(image: '/path', name: 'Puerto Rico'),
+      ],
       image: 'assets/peru.png',
       planes: [
         PlanData(price: 23, currentyType: 'USD', days: '5', gbCount: '5GB'),
@@ -162,4 +193,14 @@ class PlanData extends Equatable {
 
   @override
   List<Object?> get props => [days, price, currentyType, gbCount];
+}
+
+class Coverage extends Equatable {
+  final String name;
+  final String image;
+
+  const Coverage({required this.name, required this.image});
+
+  @override
+  List<Object?> get props => [name, image];
 }

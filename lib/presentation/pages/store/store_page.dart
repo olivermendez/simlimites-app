@@ -21,7 +21,6 @@ class _StorePageState extends State<StorePage> {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           bottom: const TabBar(
-              //isScrollable: true,
               labelColor: Colors.white,
               labelStyle: TextStyle(fontSize: 15),
               tabs: [
@@ -42,11 +41,10 @@ class _StorePageState extends State<StorePage> {
                     delegate: CountrySearchDelegate(),
                   );
                 },
-                tooltip: "hola",
-                icon: Icon(Icons.search),
+                icon: const Icon(Icons.search),
               ),
             ),
-            Icon(Icons.more_vert),
+            const Icon(Icons.more_vert),
           ],
           //backgroundColor: Colors.blue,
         ),
