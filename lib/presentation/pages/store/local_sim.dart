@@ -65,7 +65,7 @@ class _LocalSimDisplayState extends State<LocalSimDisplay> {
                 ),
                 leading: countryImageWidget(localSim),
                 title: Text(localSim.productName),
-                subtitle: Text(localSim.productType),
+                //subtitle: Text(localSim.productType),
               ),
             ),
           );

@@ -63,6 +63,10 @@ class _ProductsPagesState extends State<ProductsPages> {
                       ),
                     ),
                   ),
+                  const Text(
+                    "Elije tu plan de data",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                  ),
                   SizedBox(
                     height: 300,
                     child: GridView.builder(

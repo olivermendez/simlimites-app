@@ -19,6 +19,10 @@ class _StorePageState extends State<StorePage> {
       length: 4,
       child: Scaffold(
         appBar: AppBar(
+          centerTitle: true,
+          //foregroundColor: Colors.white,
+          backgroundColor: const Color.fromARGB(255, 4, 45, 90),
+          elevation: 0,
           automaticallyImplyLeading: false,
           bottom: const TabBar(
               labelColor: Colors.white,
@@ -29,8 +33,14 @@ class _StorePageState extends State<StorePage> {
                 Text("Global"),
                 Text("eSIM"),
               ]),
-          //leading: const Icon(Icons.menu),
-          title: const Text("Elija su plan"),
+          leading: Padding(
+            child: Image.asset('assets/imagotipo.png'),
+            padding: const EdgeInsets.only(left: 15),
+          ),
+          title: const Text(
+            "Elija su plan",
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
           actions: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -44,7 +54,7 @@ class _StorePageState extends State<StorePage> {
                 icon: const Icon(Icons.search),
               ),
             ),
-            const Icon(Icons.more_vert),
+            //const Icon(Icons.more_vert),
           ],
           //backgroundColor: Colors.blue,
         ),

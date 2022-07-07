@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:simlimites/models/sim/sim_models.dart';
 
 import '../../../models/sim/data.dart';
+import '../products_pages/product_page.dart';
 import '../products_pages/single_product.dart';
 
 class CountrySearchDelegate extends SearchDelegate {
@@ -54,10 +55,10 @@ class CountrySearchDelegate extends SearchDelegate {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ProductPage(
+                  builder: (context) => ProductsPages(
                     coverage: single.coverage,
-                    image: single.image,
-                    titleCountry: single.productName,
+                    cardImage: single.cardImage.toString(),
+                    countryName: single.productName,
                     datas: single.planes,
                   ),
                 ),
