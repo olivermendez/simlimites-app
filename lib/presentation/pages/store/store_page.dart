@@ -52,71 +52,9 @@ class _StorePageState extends State<StorePage> {
           const LocalSimDisplay(),
           const RegionalSimDisplay(),
           GlobalSimDisplay(),
-          SliverExample(),
+          Container(),
         ]),
       ),
-    );
-  }
-}
-
-class SliverExample extends StatefulWidget {
-  SliverExample({Key? key}) : super(key: key);
-
-  @override
-  State<SliverExample> createState() => _SliverExampleState();
-}
-
-class _SliverExampleState extends State<SliverExample> {
-  @override
-  Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverAppBar(
-          floating: true,
-          pinned: true,
-          snap: false,
-          centerTitle: false,
-          title: Text('Kindacode.com'),
-          actions: [
-            IconButton(
-              icon: Icon(Icons.shopping_cart),
-              onPressed: () {},
-            ),
-          ],
-          bottom: AppBar(
-            title: Container(
-              width: double.infinity,
-              height: 40,
-              color: Colors.white,
-              child: Center(
-                child: TextField(
-                  decoration: InputDecoration(
-                      hintText: 'Search for something',
-                      prefixIcon: Icon(Icons.search),
-                      suffixIcon: Icon(Icons.camera_alt)),
-                ),
-              ),
-            ),
-          ),
-        ),
-        // Other Sliver Widgets
-        SliverList(
-          delegate: SliverChildListDelegate([
-            Container(
-              height: 400,
-              child: Center(
-                child: Text(
-                  'This is an awesome shopping platform',
-                ),
-              ),
-            ),
-            Container(
-              height: 1000,
-              color: Colors.pink,
-            ),
-          ]),
-        ),
-      ],
     );
   }
 }

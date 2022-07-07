@@ -24,6 +24,7 @@ class _ProductPageState extends State<ProductPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         centerTitle: false,
         title: Text(widget.titleCountry),
         actions: const [
@@ -37,16 +38,14 @@ class _ProductPageState extends State<ProductPage> {
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
-          /*
           Container(
             decoration: BoxDecoration(
-              color: Color.fromARGB(255, 1, 90, 122),
+              color: Colors.white,
             ),
-            height: 250,
+            height: 370,
             width: MediaQuery.of(context).size.width,
-            child: Image.asset('assets/ship.png'),
+            child: Image.network(widget.image),
           ),
-          */
           Expanded(
             child: ListView.builder(
               itemCount: widget.datas.length,

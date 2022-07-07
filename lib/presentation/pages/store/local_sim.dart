@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:simlimites/presentation/pages/products_pages/product_page.dart';
 
+import '../../../models/sim/data.dart';
 import '../../../models/sim/sim_models.dart';
 import '../../widgets/country_image_widget.dart';
 import '../products_pages/single_product.dart';
@@ -12,22 +14,34 @@ class LocalSimDisplay extends StatefulWidget {
 }
 
 class _LocalSimDisplayState extends State<LocalSimDisplay> {
-  final List<SimCountries> data = SimCountries.countriesList.toList();
+  final List<SimCountries> data = DataServices.countriesList.toList();
   late List<SimCountries> local;
 
   @override
   Widget build(BuildContext context) {
     local = data.where((element) => element.productType == 'local').toList();
-    int localCount = local.length;
 
     return ListView.builder(
-        itemCount: localCount,
+        itemCount: local.length,
         itemBuilder: (context, index) {
           //SimCountries single = SimCountries.countriesList[index];
           SimCountries localSim = local[index];
 
           return GestureDetector(
             onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => ProductsPages(
+                    cardImage: localSim.cardImage.toString(),
+                    countryName: localSim.productName,
+                    datas: localSim.planes,
+                    coverage: localSim.coverage,
+                  ),
+                ),
+              );
+
+              /*
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -39,6 +53,8 @@ class _LocalSimDisplayState extends State<LocalSimDisplay> {
                   ),
                 ),
               );
+
+              */
             },
             child: Card(
               elevation: 0,

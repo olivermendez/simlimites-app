@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:simlimites/models/sim/sim_models.dart';
 
+import '../../../models/sim/data.dart';
 import '../products_pages/single_product.dart';
 
 class CountrySearchDelegate extends SearchDelegate {
-  List<SimCountries> searchResults = SimCountries.countriesList;
+  List<SimCountries> searchResults = DataServices.countriesList;
 
   @override
   List<Widget>? buildActions(BuildContext context) {

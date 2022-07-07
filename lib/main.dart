@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
+      //theme: ThemeData.dark(),
       title: 'Sim limites',
       onGenerateRoute: AppRouter.onGenerateRoute,
       initialRoute: HomePage.routeName,
