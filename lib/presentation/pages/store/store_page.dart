@@ -39,7 +39,8 @@ class _StorePageState extends State<StorePage> {
           ),
           title: const Text(
             "Elija su plan",
-            style: TextStyle(color: Colors.white, fontSize: 20),
+            style: TextStyle(
+                color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
           ),
           actions: [
             Padding(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../models/sim/sim_models.dart';
+import 'date_picker.dart';
 
 class ProductsPages extends StatefulWidget {
   ProductsPages(
@@ -25,97 +26,64 @@ class _ProductsPagesState extends State<ProductsPages> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            foregroundColor: Colors.black,
-            shadowColor: Colors.blue,
-            elevation: 10,
-            backgroundColor: Colors.transparent,
-            floating: true,
-            pinned: false,
-            snap: false,
-            centerTitle: true,
-            title: Text(
-              widget.countryName,
-              style: const TextStyle(color: Colors.black),
-            ),
-            actions: [
-              IconButton(
-                icon: const Icon(Icons.shopping_cart),
-                onPressed: () {},
-              ),
-            ],
-            //bottom: AppBar(),
+      appBar: AppBar(
+        title: Text(widget.countryName),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.shopping_cart),
+            onPressed: () {},
           ),
-          // Other Sliver Widgets
-          SliverList(
-            delegate: SliverChildListDelegate([
-              Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: SizedBox(
-                      height: 370,
-                      child: Image.network(
-                        widget.cardImage,
-                        //height: 00,
-                      ),
-                    ),
-                  ),
-                  const Text(
-                    "Elije tu plan de data",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-                  ),
-                  SizedBox(
-                    height: 300,
-                    child: GridView.builder(
-                      shrinkWrap: true,
-                      itemCount: widget.datas.length,
-                      itemBuilder: ((context, index) {
-                        final single = widget.datas[index];
-                        return GestureDetector(
-                          onTap: () {
-                            customModalBottomSheet(context, single);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(1.0),
-                            child: Card(
-                              color: const Color.fromARGB(255, 239, 239, 239),
-                              elevation: 0,
-                              child: ListTile(
-                                title: Text(
-                                  single.gbCount,
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Color.fromARGB(255, 0, 170, 255)),
-                                ),
-                                subtitle: Text(single.days + " días",
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black)),
-                                //trailing: Text(
-                                //  single.price.toString() +
-                                //      " " +
-                                //      single.currentyType.toString(),
-                                //),
-                              ),
-                            ),
-                          ),
-                        );
-                      }),
-                      gridDelegate:
-                          const SliverGridDelegateWithMaxCrossAxisExtent(
-                        maxCrossAxisExtent: 150,
-                        childAspectRatio: 3 / 2,
-                        crossAxisSpacing: 0,
-                        mainAxisSpacing: 0,
-                      ),
-                    ),
-                  ),
-                ],
+        ],
+      ),
+      body: ListView(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: SizedBox(
+              height: 370,
+              child: Image.network(
+                widget.cardImage,
+                //height: 00,
               ),
-            ]),
+            ),
+          ),
+          const Divider(),
+          DateRangeWidget(),
+          const Divider(),
+          GridView.builder(
+            shrinkWrap: true,
+            itemCount: widget.datas.length,
+            itemBuilder: ((context, index) {
+              final single = widget.datas[index];
+              return InkWell(
+                onTap: () {
+                  customModalBottomSheet(context, single);
+                },
+                child: Card(
+                  color: const Color.fromARGB(255, 239, 239, 239),
+                  elevation: 1,
+                  child: ListTile(
+                    title: Text(
+                      single.days + " días ",
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 0, 170, 255)),
+                    ),
+                    subtitle: Text("\$" + single.price.toString() + " USD",
+                        style: const TextStyle(
+                            fontWeight: FontWeight.normal,
+                            color: Colors.black)),
+                  ),
+                ),
+              );
+            }),
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 180,
+              childAspectRatio: 3 / 2,
+              mainAxisExtent: 90,
+              crossAxisSpacing: 0,
+              mainAxisSpacing: 0,
+            ),
           ),
         ],
       ),
