@@ -42,6 +42,9 @@ class _HomePageState extends State<HomePage> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        iconSize: 20,
+        showSelectedLabels: true,
+        selectedItemColor: const Color.fromARGB(255, 4, 45, 90),
         elevation: 20,
         //backgroundColor: Colors.white,
         items: const [
@@ -57,8 +60,9 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person_outlined),
+
             // ignore: deprecated_member_use
-            label: 'account',
+            label: 'Account',
           ),
         ],
         currentIndex: _selectedIndex,
