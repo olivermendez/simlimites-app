@@ -61,7 +61,13 @@ class _DateRangeWidgetState extends State<DateRangeWidget> {
       lastDate: DateTime(2023),
     );
     setState(() {
-      dateRange = newDateRange ?? dateRange;
+      //print((DateTime.now().difference(newDateRange!.end).inDays).abs());
+
+      if (newDateRange == null) {
+        return;
+      } else {
+        dateRange = newDateRange;
+      }
 
       // if (newDateRange == null) return;
       // setState(() => dateRange = newDateRange);

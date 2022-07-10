@@ -163,7 +163,7 @@ class Coverage extends Equatable {
   final String name;
   final String image;
 
-  Coverage({required this.name, required this.image});
+  const Coverage({required this.name, required this.image});
 
   @override
   List<Object?> get props => [name, image];

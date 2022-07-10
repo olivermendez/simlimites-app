@@ -1,7 +1,9 @@
 import 'package:simlimites/models/sim/sim_models.dart';
 
 class DataServices {
-  static List<SimCountries> countriesList = const [
+  static String iconPlanAssetsRoute = 'assets/';
+
+  static List<SimCountries> countriesList = [
     //local
     SimCountries(
       productId: 'productId',
@@ -22,7 +24,7 @@ class DataServices {
         Coverage(image: '/path', name: 'Islas Vírgenes de EE. UU. '),
         Coverage(image: '/path', name: 'Puerto Rico'),
       ],
-      image: 'assets/usa.png',
+      image: iconPlanAssetsRoute + 'usa.png',
       planes: [
         PlanData(price: 23, currentyType: 'USD', days: '5', gbCount: '5GB'),
         PlanData(price: 30, currentyType: 'USD', days: '7', gbCount: '20GB'),
@@ -50,7 +52,7 @@ class DataServices {
         Coverage(image: '/path', name: 'Islas Vírgenes de EE. UU. '),
         Coverage(image: '/path', name: 'Puerto Rico'),
       ],
-      image: 'assets/colombia.png',
+      image: iconPlanAssetsRoute + 'colombia.png',
       planes: [
         PlanData(price: 23, currentyType: 'USD', days: '5', gbCount: '5GB'),
         PlanData(price: 30, currentyType: 'USD', days: '7', gbCount: '20GB'),
@@ -78,7 +80,7 @@ class DataServices {
         Coverage(image: '/path', name: 'Islas Vírgenes de EE. UU. '),
         Coverage(image: '/path', name: 'Puerto Rico'),
       ],
-      image: 'assets/canada.png',
+      image: iconPlanAssetsRoute + 'canada.png',
       planes: [
         PlanData(price: 23, currentyType: 'USD', days: '5', gbCount: '5GB'),
         PlanData(price: 30, currentyType: 'USD', days: '7', gbCount: '20GB'),
@@ -106,7 +108,7 @@ class DataServices {
         Coverage(image: '/path', name: 'Islas Vírgenes de EE. UU. '),
         Coverage(image: '/path', name: 'Puerto Rico'),
       ],
-      image: 'assets/mexico.png',
+      image: iconPlanAssetsRoute + 'mexico.png',
       planes: [
         PlanData(price: 23, currentyType: 'USD', days: '5', gbCount: '5GB'),
         PlanData(price: 30, currentyType: 'USD', days: '7', gbCount: '20GB'),
@@ -162,7 +164,7 @@ class DataServices {
         Coverage(image: '/path', name: 'Islas Vírgenes de EE. UU. '),
         Coverage(image: '/path', name: 'Puerto Rico'),
       ],
-      image: 'assets/peru.png',
+      image: iconPlanAssetsRoute + 'argentina.png',
       planes: [
         PlanData(price: 23, currentyType: 'USD', days: '5', gbCount: '5GB'),
         PlanData(price: 30, currentyType: 'USD', days: '7', gbCount: '20GB'),
@@ -189,7 +191,7 @@ class DataServices {
         Coverage(image: '/path', name: 'Islas Vírgenes de EE. UU. '),
         Coverage(image: '/path', name: 'Puerto Rico'),
       ],
-      image: 'assets/peru.png',
+      image: iconPlanAssetsRoute + 'australia.png',
       planes: [
         PlanData(price: 23, currentyType: 'USD', days: '5', gbCount: '5GB'),
         PlanData(price: 30, currentyType: 'USD', days: '7', gbCount: '20GB'),
@@ -216,7 +218,7 @@ class DataServices {
         Coverage(image: '/path', name: 'Islas Vírgenes de EE. UU. '),
         Coverage(image: '/path', name: 'Puerto Rico'),
       ],
-      image: 'assets/peru.png',
+      image: iconPlanAssetsRoute + 'germany.png',
       planes: [
         PlanData(price: 23, currentyType: 'USD', days: '5', gbCount: '5GB'),
         PlanData(price: 30, currentyType: 'USD', days: '7', gbCount: '20GB'),
@@ -243,7 +245,7 @@ class DataServices {
         Coverage(image: '/path', name: 'Islas Vírgenes de EE. UU. '),
         Coverage(image: '/path', name: 'Puerto Rico'),
       ],
-      image: 'assets/peru.png',
+      image: iconPlanAssetsRoute + 'brazil.png',
       planes: [
         PlanData(price: 23, currentyType: 'USD', days: '5', gbCount: '5GB'),
         PlanData(price: 30, currentyType: 'USD', days: '7', gbCount: '20GB'),
@@ -270,7 +272,7 @@ class DataServices {
         Coverage(image: '/path', name: 'Islas Vírgenes de EE. UU. '),
         Coverage(image: '/path', name: 'Puerto Rico'),
       ],
-      image: 'assets/peru.png',
+      image: iconPlanAssetsRoute + 'belgium.png',
       planes: [
         PlanData(price: 23, currentyType: 'USD', days: '5', gbCount: '5GB'),
         PlanData(price: 30, currentyType: 'USD', days: '7', gbCount: '20GB'),
@@ -297,7 +299,7 @@ class DataServices {
         Coverage(image: '/path', name: 'Islas Vírgenes de EE. UU. '),
         Coverage(image: '/path', name: 'Puerto Rico'),
       ],
-      image: 'assets/peru.png',
+      image: iconPlanAssetsRoute + 'chile.png',
       planes: [
         PlanData(price: 23, currentyType: 'USD', days: '5', gbCount: '5GB'),
         PlanData(price: 30, currentyType: 'USD', days: '7', gbCount: '20GB'),
@@ -324,88 +326,7 @@ class DataServices {
         Coverage(image: '/path', name: 'Islas Vírgenes de EE. UU. '),
         Coverage(image: '/path', name: 'Puerto Rico'),
       ],
-      image: 'assets/peru.png',
-      planes: [
-        PlanData(price: 23, currentyType: 'USD', days: '5', gbCount: '5GB'),
-        PlanData(price: 30, currentyType: 'USD', days: '7', gbCount: '20GB'),
-        PlanData(price: 35, currentyType: 'USD', days: '15', gbCount: '35GB'),
-        PlanData(price: 45, currentyType: 'USD', days: '30', gbCount: '45GB'),
-        PlanData(price: 100, currentyType: 'USD', days: '60', gbCount: '120GB'),
-      ],
-    ),
-    SimCountries(
-      productId: 'productId',
-      productName: 'Dubái',
-      shortDescription: 'shortDescription',
-      fullDescription: 'fullDescription',
-      productType: 'local',
-      cardImage: 'assets/ship.png',
-      characteristics: [
-        'Llamadas ilimitadas en país de cobertura',
-        'Datos ilimitados en 4G LTE (sin degradación)',
-      ],
-      coverage: [
-        Coverage(image: '/path', name: 'Estados Unidos'),
-        Coverage(image: '/path', name: 'Alaska'),
-        Coverage(image: '/path', name: 'Hawai'),
-        Coverage(image: '/path', name: 'Islas Vírgenes de EE. UU. '),
-        Coverage(image: '/path', name: 'Puerto Rico'),
-      ],
-      image: 'assets/peru.png',
-      planes: [
-        PlanData(price: 23, currentyType: 'USD', days: '5', gbCount: '5GB'),
-        PlanData(price: 30, currentyType: 'USD', days: '7', gbCount: '20GB'),
-        PlanData(price: 35, currentyType: 'USD', days: '15', gbCount: '35GB'),
-        PlanData(price: 45, currentyType: 'USD', days: '30', gbCount: '45GB'),
-        PlanData(price: 100, currentyType: 'USD', days: '60', gbCount: '120GB'),
-      ],
-    ),
-    SimCountries(
-      productId: 'productId',
-      productName: 'España',
-      shortDescription: 'shortDescription',
-      fullDescription: 'fullDescription',
-      productType: 'local',
-      cardImage: 'assets/ship.png',
-      characteristics: [
-        'Llamadas ilimitadas en país de cobertura',
-        'Datos ilimitados en 4G LTE (sin degradación)',
-      ],
-      coverage: [
-        Coverage(image: '/path', name: 'Estados Unidos'),
-        Coverage(image: '/path', name: 'Alaska'),
-        Coverage(image: '/path', name: 'Hawai'),
-        Coverage(image: '/path', name: 'Islas Vírgenes de EE. UU. '),
-        Coverage(image: '/path', name: 'Puerto Rico'),
-      ],
-      image: 'assets/peru.png',
-      planes: [
-        PlanData(price: 23, currentyType: 'USD', days: '5', gbCount: '5GB'),
-        PlanData(price: 30, currentyType: 'USD', days: '7', gbCount: '20GB'),
-        PlanData(price: 35, currentyType: 'USD', days: '15', gbCount: '35GB'),
-        PlanData(price: 45, currentyType: 'USD', days: '30', gbCount: '45GB'),
-        PlanData(price: 100, currentyType: 'USD', days: '60', gbCount: '120GB'),
-      ],
-    ),
-    SimCountries(
-      productId: 'productId',
-      productName: 'Ecuador',
-      shortDescription: 'shortDescription',
-      fullDescription: 'fullDescription',
-      productType: 'local',
-      cardImage: 'assets/ship.png',
-      characteristics: [
-        'Llamadas ilimitadas en país de cobertura',
-        'Datos ilimitados en 4G LTE (sin degradación)',
-      ],
-      coverage: [
-        Coverage(image: '/path', name: 'Estados Unidos'),
-        Coverage(image: '/path', name: 'Alaska'),
-        Coverage(image: '/path', name: 'Hawai'),
-        Coverage(image: '/path', name: 'Islas Vírgenes de EE. UU. '),
-        Coverage(image: '/path', name: 'Puerto Rico'),
-      ],
-      image: 'assets/peru.png',
+      image: iconPlanAssetsRoute + 'costa-rica.png',
       planes: [
         PlanData(price: 23, currentyType: 'USD', days: '5', gbCount: '5GB'),
         PlanData(price: 30, currentyType: 'USD', days: '7', gbCount: '20GB'),

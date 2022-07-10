@@ -37,7 +37,7 @@ class SimGlobalModel extends Equatable {
         planes,
       ];
 
-  static List<SimGlobalModel> globalList = [
+  static List<SimGlobalModel> globalList = const [
     SimGlobalModel(
         productId: "global1",
         productName: "Global 1",
@@ -50,7 +50,7 @@ class SimGlobalModel extends Equatable {
           CoverageGlobal(name: "pais 3", image: "assets/regional/pais3"),
         ],
         image: "assets/regional.png",
-        planes: const [
+        planes: [
           PlanDataGlobal(
               price: 23, currencyType: 'USD', days: '5', gbCount: '5GB'),
           PlanDataGlobal(
@@ -74,7 +74,7 @@ class SimGlobalModel extends Equatable {
           CoverageGlobal(name: "pais 3", image: "assets/regional/pais3"),
         ],
         image: "assets/regional.png",
-        planes: const [
+        planes: [
           PlanDataGlobal(
               price: 23, currencyType: 'USD', days: '5', gbCount: '5GB'),
           PlanDataGlobal(
@@ -115,7 +115,7 @@ class CoverageGlobal extends Equatable {
   final String name;
   final String image;
 
-  CoverageGlobal({required this.name, required this.image});
+  const CoverageGlobal({required this.name, required this.image});
 
   @override
   List<Object?> get props => [name, image];

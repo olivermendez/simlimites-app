@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simlimites/presentation/pages/ckeck_imei/check_image_page.dart';
 import '../../presentation/pages/screens.dart';
 
 class AppRouter {
@@ -17,6 +18,8 @@ class AppRouter {
         return AccountPage.route();
       case MySimPage.routeName:
         return MySimPage.route();
+      case CheckImeiPage.routeName:
+        return CheckImeiPage.route();
 
       default:
         return _errorRoute();

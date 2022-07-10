@@ -24,24 +24,45 @@ class AccountPage extends StatelessWidget {
               children: [
                 //Pedidos
                 textWidget('Pedidos'),
-                listtileWidget('Tus pedidos'),
-                listtileWidget('Recomprar'),
-                listtileWidget('Tus pedidos'),
-                listtileWidget('Tus pedidos'),
-                listtileWidget('Tus pedidos'),
-                Divider(
+                listtileWidget(
+                  context,
+                  name: 'Tus pedidos',
+                  destination: 'error',
+                ),
+                listtileWidget(
+                  context,
+                  name: 'Recomprar',
+                  destination: 'error',
+                ),
+
+                const Divider(
                   height: 25,
                 ),
                 //Servicio al cliente
                 textWidget('Servicio al cliente'),
-                listtileWidget('Contáctanos'),
+                listtileWidget(
+                  context,
+                  name: 'Contáctanos',
+                  destination: '/error',
+                ),
+                listtileWidget(
+                  context,
+                  name: 'Validar IMEI',
+                  destination: '/check-imei',
+                ),
                 Divider(
                   height: 25,
                 ),
                 //Configuración de la cuenta
                 textWidget('Configuración de la cuenta'),
-                listtileWidget('Direcciones de envío'),
-                listtileWidget('Cambiar a cuenta corporativa'),
+                listtileWidget(
+                  context,
+                  name: 'Direcciones de envío',
+                  destination: '/error',
+                ),
+                listtileWidget(context,
+                    name: 'Cambiar a cuenta corporativa',
+                    destination: '/serror'),
               ],
             )
           ],
@@ -62,11 +83,14 @@ Padding textWidget(String name) {
   );
 }
 
-Card listtileWidget(String name) {
+Card listtileWidget(BuildContext context,
+    {required String name, required String? destination}) {
   return Card(
     elevation: 0,
     child: ListTile(
-      onTap: () {},
+      onTap: () {
+        Navigator.pushNamed(context, destination!);
+      },
       title: Text(
         name,
         style: const TextStyle(fontWeight: FontWeight.w300),

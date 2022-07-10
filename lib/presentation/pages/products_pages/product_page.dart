@@ -27,7 +27,13 @@ class _ProductsPagesState extends State<ProductsPages> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.countryName),
+        foregroundColor: Colors.black,
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: Text(
+          widget.countryName,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.shopping_cart),
