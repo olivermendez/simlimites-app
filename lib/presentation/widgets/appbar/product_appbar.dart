@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class ProductSliverAppBar extends StatefulWidget {
   ProductSliverAppBar(
@@ -18,6 +19,7 @@ class _ProductSliverAppBarState extends State<ProductSliverAppBar> {
     return SliverAppBar(
       elevation: 0,
       foregroundColor: Colors.white,
+      shadowColor: Colors.red,
       backgroundColor: Colors.white,
       title: Text(
         widget.title,
@@ -26,6 +28,7 @@ class _ProductSliverAppBarState extends State<ProductSliverAppBar> {
       pinned: false,
       expandedHeight: 200,
       flexibleSpace: FlexibleSpaceBar(
+        //title: Text(widget.title),
         background: Image.asset(
           widget.backgroundImage,
           fit: BoxFit.cover,

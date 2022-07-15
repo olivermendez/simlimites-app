@@ -11,7 +11,7 @@ PreferredSize storeCustomAppbar(BuildContext context) {
       ),
       backgroundColor: const Color.fromARGB(255, 4, 45, 90),
       foregroundColor: Colors.black,
-      elevation: 3.0,
+      elevation: 0.0,
       leading: Padding(
         child: Image.asset('assets/imagotipo.png'),
         padding: const EdgeInsets.only(left: 15),

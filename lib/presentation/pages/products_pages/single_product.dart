@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:simlimites/presentation/pages/products_pages/coverage_page.dart';
 import '../../../models/sim/esim_models.dart';
 import '../../widgets/widgets.dart';
-import 'date_picker.dart';
+import '../../widgets/date_picker.dart';
 
 class ProductPage extends StatefulWidget {
   ProductPage({
@@ -33,7 +34,9 @@ class _ProductPageState extends State<ProductPage> {
             backgroundImage: widget.cardImage,
           ),
           SliverToBoxAdapter(
-            child: ProductInfo(),
+            child: ProductInfo(
+              coverage: widget.coverage,
+            ),
           ),
         ],
       ),
@@ -42,7 +45,9 @@ class _ProductPageState extends State<ProductPage> {
 }
 
 class ProductInfo extends StatefulWidget {
-  ProductInfo({Key? key}) : super(key: key);
+  ProductInfo({Key? key, required this.coverage}) : super(key: key);
+
+  List<Coverage> coverage;
 
   @override
   State<ProductInfo> createState() => _ProductInfoState();
@@ -74,6 +79,25 @@ class _ProductInfoState extends State<ProductInfo> {
             const Divider(
               height: 20,
             ),
+            Card(
+              child: ListTile(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CoverageListPage(
+                                coverage: widget.coverage,
+                              )));
+                },
+                focusColor: Colors.white,
+                title: Text('Paises disponibles'),
+                leading: Icon(Icons.public_outlined),
+                trailing: Icon(Icons.arrow_forward_ios_outlined),
+              ),
+            ),
+            const Divider(
+              height: 20,
+            ),
             const Text(
               "fecha de activacion",
               style: TextStyle(
@@ -85,14 +109,6 @@ class _ProductInfoState extends State<ProductInfo> {
             const Divider(
               height: 10,
               color: Colors.transparent,
-            ),
-            const Card(
-              child: ListTile(
-                focusColor: Colors.white,
-                title: Text('Paises admitidos'),
-                leading: Icon(Icons.public_outlined),
-                trailing: Icon(Icons.arrow_forward_ios_outlined),
-              ),
             ),
           ],
         ),

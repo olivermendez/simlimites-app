@@ -8,9 +8,10 @@ class DataServices {
     SimCountries(
       productId: 'productId',
       productName: 'Estados Unidos',
-      shortDescription: 'shortDescription',
+      shortDescription: 'Plan de datos y llamadas',
       fromPrice: '10',
-      fullDescription: 'fullDescription',
+      fullDescription:
+          'Con sólo un código QR que escaneas en tu dispositivo, podrás tener un plan de datos instantáneamente en Estados Unidos con internet ilimitado 4G/5G en todo momento y llamadas ilimitadas en este territorio.',
       cardImage: iconPlanAssetsRoute + 'backgrounds_plans/usa.jpg',
       productType: 'local',
       characteristics: [
@@ -21,8 +22,9 @@ class DataServices {
         Coverage(image: '/path', name: 'Estados Unidos'),
         Coverage(image: '/path', name: 'Alaska'),
         Coverage(image: '/path', name: 'Hawai'),
-        Coverage(image: '/path', name: 'Islas Vírgenes de EE. UU. '),
+        Coverage(image: '/path', name: 'Saint Thomas '),
         Coverage(image: '/path', name: 'Puerto Rico'),
+        Coverage(image: '/path', name: 'Santa Cruz'),
       ],
       flagIcon: iconPlanAssetsRoute + 'usa.png',
       planes: [
