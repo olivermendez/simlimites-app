@@ -13,7 +13,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(textTheme: GoogleFonts.quicksandTextTheme()),
-      //theme: ThemeData.dark(),
       title: 'Sim limites',
       onGenerateRoute: AppRouter.onGenerateRoute,
       initialRoute: HomePage.routeName,

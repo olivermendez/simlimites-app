@@ -1,18 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:simlimites/models/sim/esim_models.dart';
 
-import '../../../models/sim/data.dart';
-import '../products_pages/product_page.dart';
-import '../products_pages/single_product.dart';
+import '../../models/sim/data.dart';
+
+import '../pages/products_pages/single_product.dart';
+import 'widgets.dart';
 
 class CountrySearchDelegate extends SearchDelegate {
   List<SimCountries> searchResults = DataServices.countriesList;
+
+  @override
+  String? get searchFieldLabel => 'Buscar';
+
+  @override
+  TextStyle? get searchFieldStyle {
+    return const TextStyle(color: Colors.white, fontSize: 18);
+  }
 
   @override
   ThemeData appBarTheme(BuildContext context) {
     return super.appBarTheme(context).copyWith(
           appBarTheme: super.appBarTheme(context).appBarTheme.copyWith(
                 elevation: 0.0,
+                backgroundColor: const Color.fromARGB(255, 4, 45, 90),
+                titleTextStyle: const TextStyle(
+                  color: Colors.white,
+                ),
               ),
         );
   }
@@ -22,7 +35,10 @@ class CountrySearchDelegate extends SearchDelegate {
     return [
       IconButton(
         onPressed: () => query = '',
-        icon: const Icon(Icons.clear),
+        icon: const Icon(
+          Icons.clear,
+          color: Colors.white,
+        ),
       )
     ];
   }
@@ -31,7 +47,10 @@ class CountrySearchDelegate extends SearchDelegate {
   Widget? buildLeading(BuildContext context) {
     return IconButton(
         onPressed: () => close(context, null),
-        icon: const Icon(Icons.arrow_back_ios));
+        icon: const Icon(
+          Icons.arrow_back_ios,
+          color: Colors.white,
+        ));
   }
 
   @override
@@ -60,11 +79,12 @@ class CountrySearchDelegate extends SearchDelegate {
           return ListTile(
             title: Text(single.productName),
             subtitle: Text(single.shortDescription),
+            leading: flagIconWidget(single),
             onTap: () {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ProductsPages(
+                  builder: (context) => ProductPage(
                     coverage: single.coverage,
                     cardImage: single.cardImage.toString(),
                     countryName: single.productName,
