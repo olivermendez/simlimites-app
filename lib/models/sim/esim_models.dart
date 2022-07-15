@@ -6,12 +6,12 @@ class SimCountries extends Equatable {
   final String shortDescription;
   final String? fullDescription;
   final String productType;
-
   final List<String> characteristics;
   final List<Coverage> coverage;
-  final String image;
+  final String flagIcon;
   final String? cardImage;
   final List<PlanData> planes;
+  final String? fromPrice;
 
   const SimCountries({
     required this.productId,
@@ -21,7 +21,8 @@ class SimCountries extends Equatable {
     required this.productType,
     required this.characteristics,
     required this.coverage,
-    required this.image,
+    required this.flagIcon,
+    this.fromPrice,
     this.cardImage,
     required this.planes,
   });
@@ -35,7 +36,7 @@ class SimCountries extends Equatable {
         productType,
         characteristics,
         coverage,
-        image,
+        flagIcon,
         planes,
       ];
 }

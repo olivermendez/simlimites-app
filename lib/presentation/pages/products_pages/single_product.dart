@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
-import '../../../models/sim/sim_models.dart';
+import '../../../models/sim/esim_models.dart';
+import '../../widgets/widgets.dart';
+import 'date_picker.dart';
 
 class ProductPage extends StatefulWidget {
   ProductPage({
     Key? key,
-    required this.image,
     required this.datas,
-    required this.titleCountry,
+    required this.cardImage,
+    required this.countryName,
     required this.coverage,
   }) : super(key: key);
 
+  String cardImage;
+  String countryName;
   final List<PlanData> datas;
-  final String titleCountry;
-  final String image;
+
   List<Coverage> coverage;
 
   @override
@@ -23,149 +26,76 @@ class _ProductPageState extends State<ProductPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        centerTitle: false,
-        title: Text(widget.titleCountry),
-        actions: const [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Icon(Icons.favorite),
+      body: CustomScrollView(
+        slivers: [
+          ProductSliverAppBar(
+            title: widget.countryName,
+            backgroundImage: widget.cardImage,
           ),
-        ],
-        //backgroundColor: Colors.purple,
-      ),
-      body: Column(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-            ),
-            height: 370,
-            width: MediaQuery.of(context).size.width,
-            child: Image.network(widget.image),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: widget.datas.length,
-              itemBuilder: ((context, index) {
-                final single = widget.datas[index];
-                return GestureDetector(
-                  onTap: () {
-                    customModalBottomSheet(context, single);
-                  },
-                  child: Card(
-                    elevation: 0,
-                    child: ListTile(
-                      title: Text(
-                        single.gbCount,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      subtitle: Text(single.days + " días"),
-                      trailing: Text(
-                        single.price.toString() +
-                            " " +
-                            single.currentyType.toString(),
-                      ),
-                    ),
-                  ),
-                );
-              }),
-            ),
+          SliverToBoxAdapter(
+            child: ProductInfo(),
           ),
         ],
       ),
     );
   }
+}
 
-  Future<dynamic> customModalBottomSheet(
-    BuildContext context,
-    PlanData single,
-  ) {
-    return showModalBottomSheet(
-      //isScrollControlled: true,
-      isDismissible: true,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(10.0),
-          topRight: Radius.circular(10.0),
+class ProductInfo extends StatefulWidget {
+  ProductInfo({Key? key}) : super(key: key);
+
+  @override
+  State<ProductInfo> createState() => _ProductInfoState();
+}
+
+class _ProductInfoState extends State<ProductInfo> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(15.0),
+      child: Container(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              "Estados Unidos",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 25,
+              ),
+            ),
+            const Text(
+              "product description",
+              style: TextStyle(
+                fontWeight: FontWeight.w300,
+                fontSize: 15,
+              ),
+            ),
+            const Divider(
+              height: 20,
+            ),
+            const Text(
+              "fecha de activacion",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 15,
+              ),
+            ),
+            DateRangeWidget(),
+            const Divider(
+              height: 10,
+              color: Colors.transparent,
+            ),
+            const Card(
+              child: ListTile(
+                focusColor: Colors.white,
+                title: Text('Paises admitidos'),
+                leading: Icon(Icons.public_outlined),
+                trailing: Icon(Icons.arrow_forward_ios_outlined),
+              ),
+            ),
+          ],
         ),
-      ),
-      context: context,
-      builder: (context) {
-        return SizedBox(
-          child: Column(
-            children: [
-              informationWidget(
-                'Cobertura',
-                widget.titleCountry,
-                Icons.public,
-              ),
-              informationWidget(
-                'Datos',
-                single.gbCount,
-                Icons.wifi,
-              ),
-              informationWidget(
-                'Duración',
-                single.days + " días",
-                Icons.calendar_month,
-              ),
-              const Divider(),
-              const ListTile(
-                title: Text(
-                  'Zonas con covertura',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Expanded(
-                child: _converturaWidget(widget.coverage),
-              ),
-              FloatingActionButton.extended(
-                icon: const Icon(Icons.shopping_bag_outlined),
-                elevation: 1,
-                onPressed: () {},
-                label: Text("Comprar plan para USD${single.price}.00"),
-              ),
-              const Divider(),
-            ],
-          ),
-        );
-      },
-    );
-  }
-
-  ListTile informationWidget(
-    String concept,
-    String result,
-    IconData icon,
-  ) {
-    return ListTile(
-      leading: Icon(icon),
-      title: Text(
-        concept,
-      ),
-      trailing: Text(
-        result,
-        style: const TextStyle(
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-    );
-  }
-
-  _converturaWidget(List<Coverage> country) {
-    return Container(
-      child: ListView.builder(
-        itemCount: country.length,
-        itemBuilder: (context, index) {
-          return Text("    " + country[index].name);
-        },
       ),
     );
   }

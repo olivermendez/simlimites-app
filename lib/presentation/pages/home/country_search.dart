@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:simlimites/models/sim/sim_models.dart';
+import 'package:simlimites/models/sim/esim_models.dart';
 
 import '../../../models/sim/data.dart';
 import '../products_pages/product_page.dart';
@@ -7,6 +7,15 @@ import '../products_pages/single_product.dart';
 
 class CountrySearchDelegate extends SearchDelegate {
   List<SimCountries> searchResults = DataServices.countriesList;
+
+  @override
+  ThemeData appBarTheme(BuildContext context) {
+    return super.appBarTheme(context).copyWith(
+          appBarTheme: super.appBarTheme(context).appBarTheme.copyWith(
+                elevation: 0.0,
+              ),
+        );
+  }
 
   @override
   List<Widget>? buildActions(BuildContext context) {

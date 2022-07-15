@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:simlimites/presentation/pages/products_pages/product_page.dart';
 
 import '../../../models/sim/data.dart';
-import '../../../models/sim/sim_models.dart';
-import '../../widgets/country_image_widget.dart';
+import '../../../models/sim/esim_models.dart';
+import '../../widgets/flag_icon.dart';
 import '../products_pages/single_product.dart';
 
 class LocalSimDisplay extends StatefulWidget {
@@ -22,17 +22,22 @@ class _LocalSimDisplayState extends State<LocalSimDisplay> {
     local = data.where((element) => element.productType == 'local').toList();
 
     return ListView.builder(
+        //gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+        //  maxCrossAxisExtent: 400,
+        //  childAspectRatio: 3 / 1,
+        //  crossAxisSpacing: 20,
+        //  mainAxisSpacing: 2,
+        //),
         itemCount: local.length,
         itemBuilder: (context, index) {
-          //SimCountries single = SimCountries.countriesList[index];
           SimCountries localSim = local[index];
 
-          return GestureDetector(
+          return InkWell(
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (_) => ProductsPages(
+                  builder: (_) => ProductPage(
                     cardImage: localSim.cardImage.toString(),
                     countryName: localSim.productName,
                     datas: localSim.planes,
@@ -40,32 +45,26 @@ class _LocalSimDisplayState extends State<LocalSimDisplay> {
                   ),
                 ),
               );
-
-              /*
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ProductPage(
-                    coverage: localSim.coverage,
-                    image: localSim.image,
-                    titleCountry: localSim.productName,
-                    datas: localSim.planes,
-                  ),
-                ),
-              );
-
-              */
             },
-            child: Card(
-              elevation: 0,
-              child: ListTile(
-                trailing: const Icon(
-                  Icons.arrow_forward_ios_rounded,
-                  size: 18,
+            child: SizedBox(
+              child: Card(
+                elevation: 0.0,
+                child: ListTile(
+                  trailing: const Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    size: 18,
+                  ),
+                  leading: countryImageWidget(localSim),
+                  title: Text(
+                    localSim.productName,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  subtitle: Text(
+                      "desde US\$" + localSim.fromPrice.toString() + ".00"),
+                  //subtitle: Text(localSim.productType),
                 ),
-                leading: countryImageWidget(localSim),
-                title: Text(localSim.productName),
-                //subtitle: Text(localSim.productType),
               ),
             ),
           );

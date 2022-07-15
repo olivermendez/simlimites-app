@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../models/sim/sim_models.dart';
+import '../../../models/sim/esim_models.dart';
 import 'date_picker.dart';
+import 'single_product.dart';
 
 class ProductsPages extends StatefulWidget {
   ProductsPages(
@@ -26,18 +27,42 @@ class _ProductsPagesState extends State<ProductsPages> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
       appBar: AppBar(
         foregroundColor: Colors.black,
         backgroundColor: Colors.white,
-        elevation: 0,
+        elevation: 10,
         title: Text(
           widget.countryName,
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.shopping_cart),
-            onPressed: () {},
+            icon: const Icon(Icons.more_vert_outlined),
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                builder: (context) {
+                  // Using Wrap makes the bottom sheet height the height of the content.
+                  // Otherwise, the height will be half the height of the screen.
+                  return Wrap(
+                    children: const [
+                      ListTile(
+                        leading: Icon(Icons.share),
+                        title: Text('Share'),
+                      ),
+                      ListTile(
+                        leading: Icon(Icons.link),
+                        title: Text('Get link'),
+                      ),
+                      Divider(
+                        height: 40,
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
           ),
         ],
       ),
@@ -53,9 +78,25 @@ class _ProductsPagesState extends State<ProductsPages> {
               ),
             ),
           ),
-          const Divider(),
+          const Padding(
+            padding: EdgeInsets.only(top: 10, left: 10),
+            child: Text(
+              "desde US\$9.50",
+              textAlign: TextAlign.center,
+            ),
+          ),
+
+          //const Divider(),
           DateRangeWidget(),
-          const Divider(),
+
+          ElevatedButton(
+            onPressed: () {
+              // Respond to button press
+            },
+            child: Text("US\$9.50 - COMPRAR AHORA"),
+          ),
+
+          /*
           GridView.builder(
             shrinkWrap: true,
             itemCount: widget.datas.length,
@@ -91,6 +132,7 @@ class _ProductsPagesState extends State<ProductsPages> {
               mainAxisSpacing: 0,
             ),
           ),
+          */
         ],
       ),
     );

@@ -10,8 +10,6 @@ class AppRouter {
     switch (settings.name) {
       case SplashScreen.routeName:
         return SplashScreen.route();
-      case WelcomePage.routeName:
-        return WelcomePage.route();
       case HomePage.routeName:
         return HomePage.route();
       case AccountPage.routeName:

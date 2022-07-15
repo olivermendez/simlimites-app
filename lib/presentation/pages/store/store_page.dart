@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:simlimites/presentation/pages/store/global_sim.dart';
-import 'package:simlimites/presentation/pages/store/local_sim.dart';
-import 'package:simlimites/presentation/pages/store/regional_sim.dart';
+
+import 'package:simlimites/presentation/pages/store/esim_page.dart';
 
 import '../home/country_search.dart';
 
@@ -15,57 +14,103 @@ class StorePage extends StatefulWidget {
 class _StorePageState extends State<StorePage> {
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 4,
-      child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          //foregroundColor: Colors.white,
-          backgroundColor: const Color.fromARGB(255, 4, 45, 90),
-          elevation: 0,
-          automaticallyImplyLeading: false,
-          bottom: const TabBar(
-              labelColor: Colors.white,
-              labelStyle: TextStyle(fontSize: 15),
-              tabs: [
-                Text("Local"),
-                Text("Regional"),
-                Text("Global"),
-                Text("eSIM"),
-              ]),
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(55),
+        child: AppBar(
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(),
+          ),
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.black,
+          elevation: 3.0,
           leading: Padding(
             child: Image.asset('assets/imagotipo.png'),
             padding: const EdgeInsets.only(left: 15),
           ),
           title: const Text(
-            "Elija su plan",
+            'Elige tú plan eSIM',
             style: TextStyle(
-                color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+            ),
           ),
           actions: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: IconButton(
-                onPressed: () {
-                  showSearch(
-                    context: context,
-                    delegate: CountrySearchDelegate(),
-                  );
-                },
-                icon: const Icon(Icons.search),
-              ),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.notifications),
             ),
-            //const Icon(Icons.more_vert),
+            IconButton(
+              onPressed: () {
+                showSearch(
+                  context: context,
+                  delegate: CountrySearchDelegate(),
+                );
+              },
+              icon: const Icon(Icons.search),
+            ),
           ],
-          //backgroundColor: Colors.blue,
         ),
-        body: TabBarView(children: [
-          const LocalSimDisplay(),
-          const RegionalSimDisplay(),
-          GlobalSimDisplay(),
-          Container(),
-        ]),
       ),
+      body: const LocalSimDisplay(),
     );
   }
+}
+
+Widget searchBarWidget(BuildContext context) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Expanded(
+        child: Container(
+          color: const Color.fromARGB(255, 4, 45, 90),
+
+          height: 37,
+          //margin: const EdgeInsets.only(left: 15),
+          child: Material(
+            //color: const Color.fromARGB(255, 4, 45, 90),
+            borderRadius: BorderRadius.circular(7),
+            elevation: 1,
+            child: TextFormField(
+              onTap: () {
+                showSearch(
+                  context: context,
+                  delegate: CountrySearchDelegate(),
+                );
+              },
+              decoration: const InputDecoration(
+                  icon: Padding(
+                    padding: EdgeInsets.only(left: 15),
+                    child: Icon(
+                      Icons.search,
+                      color: Colors.black,
+                      size: 20,
+                    ),
+                  ),
+                  filled: true,
+                  fillColor: const Color.fromARGB(255, 4, 45, 90),
+                  contentPadding: EdgeInsets.only(top: 10),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(7),
+                    ),
+                    borderSide: BorderSide.none,
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(7),
+                    ),
+                    borderSide: BorderSide(color: Colors.white, width: 1),
+                  ),
+                  hintText: 'Buscar en Simlimites',
+                  hintStyle: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 17,
+                  )),
+            ),
+          ),
+        ),
+      ),
+    ],
+  );
 }

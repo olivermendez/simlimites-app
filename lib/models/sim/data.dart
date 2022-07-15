@@ -1,4 +1,4 @@
-import 'package:simlimites/models/sim/sim_models.dart';
+import 'package:simlimites/models/sim/esim_models.dart';
 
 class DataServices {
   static String iconPlanAssetsRoute = 'assets/';
@@ -9,9 +9,9 @@ class DataServices {
       productId: 'productId',
       productName: 'Estados Unidos',
       shortDescription: 'shortDescription',
+      fromPrice: '10',
       fullDescription: 'fullDescription',
-      cardImage:
-          'https://cdn-appfo.nitrocdn.com/ezpwpnlIhXXnOemnkjdVuXlnpuBbpFkh/assets/static/optimized/rev-3978c0c/wp-content/uploads/2021/01/USA-Estado-Unidos-sim-limites.png',
+      cardImage: iconPlanAssetsRoute + 'backgrounds_plans/usa.jpg',
       productType: 'local',
       characteristics: [
         'Llamadas ilimitadas en país de cobertura',
@@ -24,7 +24,7 @@ class DataServices {
         Coverage(image: '/path', name: 'Islas Vírgenes de EE. UU. '),
         Coverage(image: '/path', name: 'Puerto Rico'),
       ],
-      image: iconPlanAssetsRoute + 'usa.png',
+      flagIcon: iconPlanAssetsRoute + 'usa.png',
       planes: [
         PlanData(price: 23, currentyType: 'USD', days: '5', gbCount: '5GB'),
         PlanData(price: 30, currentyType: 'USD', days: '7', gbCount: '20GB'),
@@ -35,12 +35,12 @@ class DataServices {
     ),
     SimCountries(
       productId: 'productId',
-      productName: 'Colombia',
+      productName: 'Puerto Rico',
       shortDescription: 'shortDescription',
       fullDescription: 'fullDescription',
+      fromPrice: '10',
       productType: 'local',
-      cardImage:
-          'https://cdn-appfo.nitrocdn.com/ezpwpnlIhXXnOemnkjdVuXlnpuBbpFkh/assets/static/optimized/rev-3978c0c/wp-content/uploads/2019/11/Plan-Colombia-sim-limites-1024x1024.png',
+      cardImage: iconPlanAssetsRoute + 'backgrounds_plans/pr.jpg',
       characteristics: [
         'Llamadas ilimitadas en país de cobertura',
         'Datos ilimitados en 4G LTE (sin degradación',
@@ -52,7 +52,7 @@ class DataServices {
         Coverage(image: '/path', name: 'Islas Vírgenes de EE. UU. '),
         Coverage(image: '/path', name: 'Puerto Rico'),
       ],
-      image: iconPlanAssetsRoute + 'colombia.png',
+      flagIcon: iconPlanAssetsRoute + 'colombia.png',
       planes: [
         PlanData(price: 23, currentyType: 'USD', days: '5', gbCount: '5GB'),
         PlanData(price: 30, currentyType: 'USD', days: '7', gbCount: '20GB'),
@@ -65,10 +65,10 @@ class DataServices {
       productId: 'productId',
       productName: 'Canadá',
       shortDescription: 'shortDescription',
+      fromPrice: '10',
       fullDescription: 'fullDescription',
       productType: 'local',
-      cardImage:
-          'https://cdn-appfo.nitrocdn.com/ezpwpnlIhXXnOemnkjdVuXlnpuBbpFkh/assets/static/optimized/rev-3978c0c/wp-content/uploads/2021/05/Plan-sim-limites_Canada-1024x1024.png',
+      cardImage: iconPlanAssetsRoute + 'backgrounds_plans/canada.jpg',
       characteristics: [
         'Llamadas ilimitadas en país de cobertura',
         'Datos ilimitados en 4G LTE (sin degradación)',
@@ -80,7 +80,7 @@ class DataServices {
         Coverage(image: '/path', name: 'Islas Vírgenes de EE. UU. '),
         Coverage(image: '/path', name: 'Puerto Rico'),
       ],
-      image: iconPlanAssetsRoute + 'canada.png',
+      flagIcon: iconPlanAssetsRoute + 'canada.png',
       planes: [
         PlanData(price: 23, currentyType: 'USD', days: '5', gbCount: '5GB'),
         PlanData(price: 30, currentyType: 'USD', days: '7', gbCount: '20GB'),
@@ -92,11 +92,11 @@ class DataServices {
     SimCountries(
       productId: 'productId',
       productName: 'México',
+      fromPrice: '10',
       shortDescription: 'shortDescription',
       fullDescription: 'fullDescription',
       productType: 'local',
-      cardImage:
-          'https://cdn-appfo.nitrocdn.com/ezpwpnlIhXXnOemnkjdVuXlnpuBbpFkh/assets/static/optimized/rev-3978c0c/wp-content/uploads/2021/07/Mexico-1024x1024.png',
+      cardImage: iconPlanAssetsRoute + 'backgrounds_plans/mex.jpg',
       characteristics: [
         'Llamadas ilimitadas en país de cobertura',
         'Datos ilimitados en 4G LTE (sin degradación)',
@@ -108,7 +108,7 @@ class DataServices {
         Coverage(image: '/path', name: 'Islas Vírgenes de EE. UU. '),
         Coverage(image: '/path', name: 'Puerto Rico'),
       ],
-      image: iconPlanAssetsRoute + 'mexico.png',
+      flagIcon: iconPlanAssetsRoute + 'mexico.png',
       planes: [
         PlanData(price: 23, currentyType: 'USD', days: '5', gbCount: '5GB'),
         PlanData(price: 30, currentyType: 'USD', days: '7', gbCount: '20GB'),
@@ -117,6 +117,7 @@ class DataServices {
         PlanData(price: 100, currentyType: 'USD', days: '60', gbCount: '120GB'),
       ],
     ),
+    /*
     SimCountries(
       productId: 'productId',
       productName: 'Perú',
@@ -335,5 +336,6 @@ class DataServices {
         PlanData(price: 100, currentyType: 'USD', days: '60', gbCount: '120GB'),
       ],
     ),
+    */
   ];
 }

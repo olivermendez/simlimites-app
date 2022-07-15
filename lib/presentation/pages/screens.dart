@@ -1,6 +1,3 @@
-//Welcome page
-export 'init/welcome_page.dart';
-
 //home
 export 'home/home_page.dart';
 
@@ -23,4 +20,4 @@ export 'mysim/my_sim.dart';
 export 'home/home_page.dart';
 
 //store
-export 'store/store_page.dart';
+

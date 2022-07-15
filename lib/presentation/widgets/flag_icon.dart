@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../models/sim/sim_models.dart';
+import '../../models/sim/esim_models.dart';
 
 ConstrainedBox countryImageWidget(SimCountries localSim) {
   return ConstrainedBox(
@@ -12,6 +12,6 @@ ConstrainedBox countryImageWidget(SimCountries localSim) {
       ),
       child: FadeInImage(
         placeholder: const AssetImage('assets/loading.gif'),
-        image: AssetImage(localSim.image),
+        image: AssetImage(localSim.flagIcon),
       ));
 }
