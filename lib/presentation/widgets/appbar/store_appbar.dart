@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../pages/store/notifications_page.dart';
 import '../widgets.dart';
 
 PreferredSize storeCustomAppbar(BuildContext context) {
@@ -26,7 +27,10 @@ PreferredSize storeCustomAppbar(BuildContext context) {
       ),
       actions: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            showModalBottomSheet(
+                context: context, builder: (_) => NotificationPage());
+          },
           icon: const Icon(
             Icons.notifications,
             color: Colors.white,
