@@ -85,10 +85,7 @@ class CountrySearchDelegate extends SearchDelegate {
                 context,
                 MaterialPageRoute(
                   builder: (context) => ProductPage(
-                    coverage: single.coverage,
-                    cardImage: single.cardImage.toString(),
-                    countryName: single.productName,
-                    datas: single.planes,
+                    product: single,
                   ),
                 ),
               );

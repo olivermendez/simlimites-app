@@ -18,8 +18,8 @@ class _CoverageListPageState extends State<CoverageListPage> {
         foregroundColor: Colors.black,
         elevation: 0,
         backgroundColor: Colors.white,
-        title: const Text(
-          'Paises disponibles',
+        title: Text(
+          'Paises disponibles (' + widget.coverage.length.toString() + ')',
           style: TextStyle(
             color: Colors.black,
             fontSize: 16,

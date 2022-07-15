@@ -78,7 +78,7 @@ class _DateRangeWidgetState extends State<DateRangeWidget> {
       } else {
         dateRange = newDateRange;
         totalDays = (DateTime.now().difference(newDateRange.end).inDays).abs();
-        print(totalDays);
+        //print(totalDays);
       }
 
       // if (newDateRange == null) return;

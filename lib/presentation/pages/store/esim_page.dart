@@ -32,10 +32,7 @@ class _LocalSimDisplayState extends State<LocalSimDisplay> {
                 context,
                 MaterialPageRoute(
                   builder: (_) => ProductPage(
-                    cardImage: localSim.cardImage.toString(),
-                    countryName: localSim.productName,
-                    datas: localSim.planes,
-                    coverage: localSim.coverage,
+                    product: localSim,
                   ),
                 ),
               );

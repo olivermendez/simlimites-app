@@ -14,11 +14,11 @@ class DataServices {
           'Con sólo un código QR que escaneas en tu dispositivo, podrás tener un plan de datos instantáneamente en Estados Unidos con internet ilimitado 4G/5G en todo momento y llamadas ilimitadas en este territorio.',
       cardImage: iconPlanAssetsRoute + 'backgrounds_plans/usa.jpg',
       productType: 'local',
-      characteristics: [
+      characteristics: const [
         'Llamadas ilimitadas en país de cobertura',
         'Datos ilimitados en 4G LTE (sin degradación',
       ],
-      coverage: [
+      coverage: const [
         Coverage(image: '/path', name: 'Estados Unidos'),
         Coverage(image: '/path', name: 'Alaska'),
         Coverage(image: '/path', name: 'Hawai'),
@@ -27,7 +27,7 @@ class DataServices {
         Coverage(image: '/path', name: 'Santa Cruz'),
       ],
       flagIcon: iconPlanAssetsRoute + 'usa.png',
-      planes: [
+      planes: const [
         PlanData(price: 23, currentyType: 'USD', days: '5', gbCount: '5GB'),
         PlanData(price: 30, currentyType: 'USD', days: '7', gbCount: '20GB'),
         PlanData(price: 35, currentyType: 'USD', days: '15', gbCount: '35GB'),
@@ -38,16 +38,16 @@ class DataServices {
     SimCountries(
       productId: 'productId',
       productName: 'Puerto Rico',
-      shortDescription: 'shortDescription',
+      shortDescription: 'Plan de datos y llamadas',
       fullDescription: 'fullDescription',
       fromPrice: '10',
       productType: 'local',
       cardImage: iconPlanAssetsRoute + 'backgrounds_plans/pr.jpg',
-      characteristics: [
+      characteristics: const [
         'Llamadas ilimitadas en país de cobertura',
         'Datos ilimitados en 4G LTE (sin degradación',
       ],
-      coverage: [
+      coverage: const [
         Coverage(image: '/path', name: 'Estados Unidos'),
         Coverage(image: '/path', name: 'Alaska'),
         Coverage(image: '/path', name: 'Hawai'),
@@ -55,7 +55,7 @@ class DataServices {
         Coverage(image: '/path', name: 'Puerto Rico'),
       ],
       flagIcon: iconPlanAssetsRoute + 'colombia.png',
-      planes: [
+      planes: const [
         PlanData(price: 23, currentyType: 'USD', days: '5', gbCount: '5GB'),
         PlanData(price: 30, currentyType: 'USD', days: '7', gbCount: '20GB'),
         PlanData(price: 35, currentyType: 'USD', days: '15', gbCount: '35GB'),
@@ -66,16 +66,16 @@ class DataServices {
     SimCountries(
       productId: 'productId',
       productName: 'Canadá',
-      shortDescription: 'shortDescription',
+      shortDescription: 'Plan de datos y llamadas',
       fromPrice: '10',
       fullDescription: 'fullDescription',
       productType: 'local',
       cardImage: iconPlanAssetsRoute + 'backgrounds_plans/canada.jpg',
-      characteristics: [
+      characteristics: const [
         'Llamadas ilimitadas en país de cobertura',
         'Datos ilimitados en 4G LTE (sin degradación)',
       ],
-      coverage: [
+      coverage: const [
         Coverage(image: '/path', name: 'Estados Unidos'),
         Coverage(image: '/path', name: 'Alaska'),
         Coverage(image: '/path', name: 'Hawai'),
@@ -83,7 +83,7 @@ class DataServices {
         Coverage(image: '/path', name: 'Puerto Rico'),
       ],
       flagIcon: iconPlanAssetsRoute + 'canada.png',
-      planes: [
+      planes: const [
         PlanData(price: 23, currentyType: 'USD', days: '5', gbCount: '5GB'),
         PlanData(price: 30, currentyType: 'USD', days: '7', gbCount: '20GB'),
         PlanData(price: 35, currentyType: 'USD', days: '15', gbCount: '35GB'),
@@ -95,15 +95,15 @@ class DataServices {
       productId: 'productId',
       productName: 'México',
       fromPrice: '10',
-      shortDescription: 'shortDescription',
+      shortDescription: 'Plan de datos y llamadas',
       fullDescription: 'fullDescription',
       productType: 'local',
       cardImage: iconPlanAssetsRoute + 'backgrounds_plans/mex.jpg',
-      characteristics: [
+      characteristics: const [
         'Llamadas ilimitadas en país de cobertura',
         'Datos ilimitados en 4G LTE (sin degradación)',
       ],
-      coverage: [
+      coverage: const [
         Coverage(image: '/path', name: 'Estados Unidos'),
         Coverage(image: '/path', name: 'Alaska'),
         Coverage(image: '/path', name: 'Hawai'),
@@ -111,7 +111,7 @@ class DataServices {
         Coverage(image: '/path', name: 'Puerto Rico'),
       ],
       flagIcon: iconPlanAssetsRoute + 'mexico.png',
-      planes: [
+      planes: const [
         PlanData(price: 23, currentyType: 'USD', days: '5', gbCount: '5GB'),
         PlanData(price: 30, currentyType: 'USD', days: '7', gbCount: '20GB'),
         PlanData(price: 35, currentyType: 'USD', days: '15', gbCount: '35GB'),

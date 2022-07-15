@@ -7,17 +7,10 @@ import '../../widgets/date_picker.dart';
 class ProductPage extends StatefulWidget {
   ProductPage({
     Key? key,
-    required this.datas,
-    required this.cardImage,
-    required this.countryName,
-    required this.coverage,
+    required this.product,
   }) : super(key: key);
 
-  String cardImage;
-  String countryName;
-  final List<PlanData> datas;
-
-  List<Coverage> coverage;
+  SimCountries product;
 
   @override
   State<ProductPage> createState() => _ProductPageState();
@@ -30,12 +23,12 @@ class _ProductPageState extends State<ProductPage> {
       body: CustomScrollView(
         slivers: [
           ProductSliverAppBar(
-            title: widget.countryName,
-            backgroundImage: widget.cardImage,
+            title: widget.product.productName,
+            backgroundImage: widget.product.cardImage.toString(),
           ),
           SliverToBoxAdapter(
             child: ProductInfo(
-              coverage: widget.coverage,
+              product: widget.product,
             ),
           ),
         ],
@@ -45,9 +38,9 @@ class _ProductPageState extends State<ProductPage> {
 }
 
 class ProductInfo extends StatefulWidget {
-  ProductInfo({Key? key, required this.coverage}) : super(key: key);
+  ProductInfo({Key? key, required this.product}) : super(key: key);
 
-  List<Coverage> coverage;
+  SimCountries product;
 
   @override
   State<ProductInfo> createState() => _ProductInfoState();
@@ -62,16 +55,16 @@ class _ProductInfoState extends State<ProductInfo> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              "Estados Unidos",
-              style: TextStyle(
+            Text(
+              widget.product.productName,
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 25,
               ),
             ),
-            const Text(
-              "product description",
-              style: TextStyle(
+            Text(
+              widget.product.shortDescription,
+              style: const TextStyle(
                 fontWeight: FontWeight.w300,
                 fontSize: 15,
               ),
@@ -83,16 +76,18 @@ class _ProductInfoState extends State<ProductInfo> {
               child: ListTile(
                 onTap: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => CoverageListPage(
-                                coverage: widget.coverage,
-                              )));
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CoverageListPage(
+                        coverage: widget.product.coverage,
+                      ),
+                    ),
+                  );
                 },
                 focusColor: Colors.white,
-                title: Text('Paises disponibles'),
-                leading: Icon(Icons.public_outlined),
-                trailing: Icon(Icons.arrow_forward_ios_outlined),
+                title: const Text('Paises disponibles'),
+                leading: const Icon(Icons.public_outlined),
+                trailing: const Icon(Icons.arrow_forward_ios_outlined),
               ),
             ),
             const Divider(

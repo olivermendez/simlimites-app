@@ -17,7 +17,13 @@ Card productSingleCardWidget(SimCountries localSim) {
           fontWeight: FontWeight.bold,
         ),
       ),
-      subtitle: Text("desde US\$" + localSim.fromPrice.toString() + ".00"),
+      subtitle: Text(
+        "desde: \$" + localSim.fromPrice.toString() + ".00",
+        style: const TextStyle(
+          color: Color.fromARGB(255, 0, 121, 219),
+          fontWeight: FontWeight.bold,
+        ),
+      ),
       //subtitle: Text(localSim.productType),
     ),
   );
