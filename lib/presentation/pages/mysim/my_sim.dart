@@ -42,7 +42,7 @@ class _MySimPageState extends State<MySimPage> {
               snapshot.hasData &&
               snapshot.data != null) {
             return Center(
-              child: Text('data'),
+              child: Text(snapshot.data![0].slug),
             );
           } else {
             return Center(child: CircularProgressIndicator());
