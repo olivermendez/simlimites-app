@@ -79,7 +79,7 @@ Padding textWidget(String name) {
       name,
       style: const TextStyle(
         fontWeight: FontWeight.bold,
-        fontSize: 17,
+        fontSize: 18,
       ),
     ),
   );

@@ -59,14 +59,14 @@ class _ProductInfoState extends State<ProductInfo> {
               widget.product.productName,
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 25,
+                fontSize: 30,
               ),
             ),
             Text(
               widget.product.shortDescription,
               style: const TextStyle(
-                fontWeight: FontWeight.w300,
-                fontSize: 15,
+                fontWeight: FontWeight.w400,
+                fontSize: 18,
               ),
             ),
             const Divider(

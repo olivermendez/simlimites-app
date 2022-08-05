@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:simlimites/presentation/pages/favorite/fav_page.dart';
 
 import '../screens.dart';
 import '../store/store_page.dart';
@@ -35,6 +36,7 @@ class _HomePageState extends State<HomePage> {
     List<Widget> _widgetOptions = <Widget>[
       StorePage(),
       MySimPage(),
+      //FavoritePage(),
       AccountPage(),
     ];
 
@@ -43,6 +45,8 @@ class _HomePageState extends State<HomePage> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        unselectedItemColor: const Color.fromARGB(255, 4, 45, 90),
+        //unselectedLabelStyle: TextStyle(color: Colors.black),
         iconSize: 20,
         showSelectedLabels: true,
         selectedItemColor: const Color.fromARGB(255, 4, 45, 90),
@@ -50,17 +54,23 @@ class _HomePageState extends State<HomePage> {
         //backgroundColor: Colors.white,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.local_mall_outlined),
+            icon: Icon(
+              Icons.search_outlined,
+            ),
             // ignore: deprecated_member_use
-            label: 'shop',
+            label: 'Shop',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.sim_card_outlined),
+            icon: Icon(
+              Icons.sim_card_outlined,
+            ),
             // ignore: deprecated_member_use
             label: 'My SIM',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person_outlined),
+            icon: Icon(
+              Icons.person_outlined,
+            ),
 
             // ignore: deprecated_member_use
             label: 'Account',

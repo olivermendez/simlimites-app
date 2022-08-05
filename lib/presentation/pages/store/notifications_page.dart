@@ -27,7 +27,7 @@ class _NotificationPageState extends State<NotificationPage> {
       body: Column(
         children: [
           Card(
-            color: Color.fromARGB(255, 238, 238, 238),
+            color: Color.fromARGB(255, 246, 246, 246),
             child: ListTile(
               title: Text('Plan Estados Unidos'),
               subtitle: Text('test'),
