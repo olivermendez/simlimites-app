@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:lottie/lottie.dart';
+import 'package:simlimites/domain/entities/package_lists.dart';
 
 import '../../../infraestructure/api/get_packages_list_ds.dart';
 import '../../../infraestructure/models/package_list_model.dart';
@@ -41,11 +42,9 @@ class _MySimPageState extends State<MySimPage> {
           if (snapshot.connectionState == ConnectionState.done &&
               snapshot.hasData &&
               snapshot.data != null) {
-            return Center(
-              child: Text(snapshot.data![0].slug),
-            );
+            return OperatorsCards(plans: snapshot.data!);
           } else {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
         },
       ),
@@ -81,4 +80,67 @@ class _MySimPageState extends State<MySimPage> {
       ),
     );
   }
+}
+
+class OperatorsCards extends StatefulWidget {
+  List<DatumModel> plans;
+  OperatorsCards({required this.plans, Key? key}) : super(key: key);
+
+  @override
+  State<OperatorsCards> createState() => _OperatorsCardsState();
+}
+
+class _OperatorsCardsState extends State<OperatorsCards> {
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: widget.plans.length,
+      itemBuilder: (context, index) {
+        final opt = widget.plans[index];
+
+        return Card(
+          elevation: 0.0,
+          child: ListTile(
+            trailing: const Icon(
+              Icons.arrow_forward_ios_rounded,
+              size: 18,
+            ),
+            leading: flagIconWidget(opt.image),
+            title: Text(
+              opt.title,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            /*
+            subtitle: Text(
+              opt.countryCode.toString(),
+              style: const TextStyle(
+                color: Color.fromARGB(255, 0, 121, 219),
+                fontWeight: FontWeight.bold,
+              ),
+            
+            ),
+            */
+            //subtitle: Text(localSim.productType),
+          ),
+        );
+      },
+    );
+  }
+}
+
+ConstrainedBox flagIconWidget(ImageModel localSim) {
+  return ConstrainedBox(
+    constraints: const BoxConstraints(
+      minWidth: 30,
+      minHeight: 30,
+      maxWidth: 40,
+      maxHeight: 40,
+    ),
+    child: FadeInImage(
+      placeholder: const AssetImage('assets/loading.gif'),
+      image: NetworkImage(localSim.url),
+    ),
+  );
 }

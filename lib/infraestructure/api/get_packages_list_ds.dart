@@ -14,7 +14,7 @@ class PackageDatasourcesApi extends IPackageListRepository {
 
     //{{url}}/{{version}}/packages?filter[country]=US&limit=100&page=1&sort=+country_code&filter[type]=local
 
-    var url = Uri.parse('${remoteUrl}packages?filter[country]=US');
+    var url = Uri.parse('${remoteUrl}packages');
 
     final response = await http.get(
       url,

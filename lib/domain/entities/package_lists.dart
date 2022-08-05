@@ -27,15 +27,15 @@ class Datum extends Equatable {
   final String slug;
   final String countryCode;
   final String title;
-  final Image image;
+  final ImagePlan image;
   final List<Operator> operators;
 
   @override
   List<Object?> get props => [slug, countryCode, title, image, operators];
 }
 
-class Image extends Equatable {
-  Image({
+class ImagePlan extends Equatable {
+  ImagePlan({
     required this.width,
     required this.height,
     required this.url,
@@ -82,7 +82,7 @@ class Operator extends Equatable {
   final dynamic apnValue;
   final bool isRoaming;
   final List<String> info;
-  final Image image;
+  final ImagePlan image;
   final List<Package> packages;
   final List<Country> countries;
 
@@ -116,7 +116,7 @@ class Country extends Equatable {
 
   final String countryCode;
   final String title;
-  final Image image;
+  final ImagePlan image;
 
   @override
   List<Object?> get props => [countryCode, title, image];

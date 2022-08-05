@@ -59,7 +59,7 @@ class DatumModel extends Datum {
       );
 }
 
-class ImageModel extends Image {
+class ImageModel extends ImagePlan {
   ImageModel({
     required this.width,
     required this.height,
