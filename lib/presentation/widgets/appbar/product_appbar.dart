@@ -26,10 +26,11 @@ class _ProductSliverAppBarState extends State<ProductSliverAppBar> {
         style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
       ),
       pinned: false,
+      stretch: true,
       expandedHeight: 200,
       flexibleSpace: FlexibleSpaceBar(
         //title: Text(widget.title),
-        background: Image.asset(
+        background: Image.network(
           widget.backgroundImage,
           fit: BoxFit.cover,
         ),

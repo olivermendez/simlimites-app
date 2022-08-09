@@ -35,7 +35,7 @@ class Datum extends Equatable {
 }
 
 class ImagePlan extends Equatable {
-  ImagePlan({
+  const ImagePlan({
     required this.width,
     required this.height,
     required this.url,
@@ -50,7 +50,7 @@ class ImagePlan extends Equatable {
 }
 
 class Operator extends Equatable {
-  Operator({
+  const Operator({
     required this.id,
     required this.style,
     required this.gradientStart,
@@ -108,7 +108,7 @@ class Operator extends Equatable {
 }
 
 class Country extends Equatable {
-  Country({
+  const Country({
     required this.countryCode,
     required this.title,
     required this.image,
@@ -123,7 +123,7 @@ class Country extends Equatable {
 }
 
 class Package extends Equatable {
-  Package({
+  const Package({
     required this.id,
     required this.type,
     required this.price,
@@ -177,7 +177,7 @@ class Links extends Equatable {
 }
 
 class Meta extends Equatable {
-  Meta({
+  const Meta({
     this.message,
     this.currentPage,
     this.from,
@@ -188,14 +188,14 @@ class Meta extends Equatable {
     this.total,
   });
 
-  String? message;
-  int? currentPage;
-  int? from;
-  int? lastPage;
-  String? path;
-  String? perPage;
-  int? to;
-  int? total;
+  final String? message;
+  final int? currentPage;
+  final int? from;
+  final int? lastPage;
+  final String? path;
+  final String? perPage;
+  final int? to;
+  final int? total;
 
   @override
   List<Object?> get props => [

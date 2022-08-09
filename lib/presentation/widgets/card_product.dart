@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../infraestructure/models/package_list_model.dart';
 import '../../models/sim/esim_models.dart';
 
 Card productSingleCardWidget(SimCountries localSim) {
@@ -10,7 +11,7 @@ Card productSingleCardWidget(SimCountries localSim) {
         Icons.arrow_forward_ios_rounded,
         size: 18,
       ),
-      leading: flagIconWidget(localSim),
+      //leading: flagIconWidget(localSim),
       title: Text(
         localSim.productName,
         style: const TextStyle(
@@ -29,7 +30,7 @@ Card productSingleCardWidget(SimCountries localSim) {
   );
 }
 
-ConstrainedBox flagIconWidget(SimCountries localSim) {
+ConstrainedBox flagIconWidget({required ImageModel image}) {
   return ConstrainedBox(
     constraints: const BoxConstraints(
       minWidth: 30,
@@ -39,7 +40,7 @@ ConstrainedBox flagIconWidget(SimCountries localSim) {
     ),
     child: FadeInImage(
       placeholder: const AssetImage('assets/loading.gif'),
-      image: AssetImage(localSim.flagIcon),
+      image: NetworkImage(image.url),
     ),
   );
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:lottie/lottie.dart';
-import 'package:simlimites/domain/entities/package_lists.dart';
+//import 'package:simlimites/domain/entities/package_lists.dart';
 
 import '../../../infraestructure/api/get_packages_list_ds.dart';
 import '../../../infraestructure/models/package_list_model.dart';
@@ -34,21 +34,7 @@ class _MySimPageState extends State<MySimPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: normalAppBar('My Sim'),
-      body: FutureBuilder(
-        future: _ds.getOperatorsByCountry(),
-        builder: (context, AsyncSnapshot<List<DatumModel>> snapshot) {
-          if (snapshot.connectionState == ConnectionState.done &&
-              snapshot.hasData &&
-              snapshot.data != null) {
-            return OperatorsCards(plans: snapshot.data!);
-          } else {
-            return const Center(child: CircularProgressIndicator());
-          }
-        },
-      ),
-    );
+    return scaffolding();
   }
 
   Scaffold scaffolding() {
@@ -82,6 +68,7 @@ class _MySimPageState extends State<MySimPage> {
   }
 }
 
+// ignore: must_be_immutable
 class OperatorsCards extends StatefulWidget {
   List<DatumModel> plans;
   OperatorsCards({required this.plans, Key? key}) : super(key: key);
@@ -96,7 +83,7 @@ class _OperatorsCardsState extends State<OperatorsCards> {
     return ListView.builder(
       itemCount: widget.plans.length,
       itemBuilder: (context, index) {
-        final opt = widget.plans[index];
+        final package = widget.plans[index];
 
         return Card(
           elevation: 0.0,
@@ -105,9 +92,9 @@ class _OperatorsCardsState extends State<OperatorsCards> {
               Icons.arrow_forward_ios_rounded,
               size: 18,
             ),
-            leading: flagIconWidget(opt.image),
+            leading: flagIconWidget(image: package.image),
             title: Text(
-              opt.title,
+              package.title,
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
               ),
@@ -130,7 +117,7 @@ class _OperatorsCardsState extends State<OperatorsCards> {
   }
 }
 
-ConstrainedBox flagIconWidget(ImageModel localSim) {
+ConstrainedBox flagIconWidget({required ImageModel image}) {
   return ConstrainedBox(
     constraints: const BoxConstraints(
       minWidth: 30,
@@ -140,7 +127,7 @@ ConstrainedBox flagIconWidget(ImageModel localSim) {
     ),
     child: FadeInImage(
       placeholder: const AssetImage('assets/loading.gif'),
-      image: NetworkImage(localSim.url),
+      image: NetworkImage(image.url),
     ),
   );
 }

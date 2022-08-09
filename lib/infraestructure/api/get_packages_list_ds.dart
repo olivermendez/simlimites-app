@@ -13,9 +13,7 @@ class PackageDatasourcesApi extends IPackageListRepository {
     final token = dotenv.get('TOKEN');
 
     //{{url}}/{{version}}/packages?filter[country]=US&limit=100&page=1&sort=+country_code&filter[type]=local
-
     var url = Uri.parse('${remoteUrl}packages');
-
     final response = await http.get(
       url,
       headers: {'accept': 'application/json', 'authorization': 'Bearer $token'},

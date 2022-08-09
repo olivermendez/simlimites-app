@@ -5,7 +5,7 @@ class OnboardingInfo {
       {required this.title, required this.description, required this.image});
 }
 
-final List<OnboardingInfo> onboard_data = [
+final List<OnboardingInfo> onboardData = [
   OnboardingInfo(
       title: "slide 1",
       description: "description 1",

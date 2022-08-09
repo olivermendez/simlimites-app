@@ -6,11 +6,10 @@ import 'presentation/pages/screens.dart';
 
 //void main() => runApp(const MyApp());
 
-void main() async {
+Future<void> main() async {
   await dotenv.load();
+  WidgetsFlutterBinding.ensureInitialized();
   return runApp(const MyApp());
-  //var x = dotenv.env['foo'];
-  // ...
 }
 
 class MyApp extends StatelessWidget {

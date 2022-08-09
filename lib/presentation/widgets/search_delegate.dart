@@ -79,8 +79,9 @@ class CountrySearchDelegate extends SearchDelegate {
           return ListTile(
             title: Text(single.productName),
             subtitle: Text(single.shortDescription),
-            leading: flagIconWidget(single),
+            //leading: flagIconWidget(single),
             onTap: () {
+              /*
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
@@ -89,6 +90,7 @@ class CountrySearchDelegate extends SearchDelegate {
                   ),
                 ),
               );
+              */
               //query = single.productName;
               //showResults(context);
             },

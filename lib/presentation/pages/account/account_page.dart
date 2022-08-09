@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:simlimites/presentation/pages/home/home_page.dart';
+//import 'package:simlimites/presentation/pages/home/home_page.dart';
 
 import '../../widgets/widgets.dart';
 
@@ -52,7 +52,7 @@ class AccountPage extends StatelessWidget {
                   name: 'Validar IMEI',
                   destination: '/check-imei',
                 ),
-                Divider(
+                const Divider(
                   height: 25,
                 ),
                 //Configuración de la cuenta

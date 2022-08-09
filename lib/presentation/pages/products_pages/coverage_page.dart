@@ -20,7 +20,7 @@ class _CoverageListPageState extends State<CoverageListPage> {
         backgroundColor: Colors.white,
         title: Text(
           'Paises disponibles (' + widget.coverage.length.toString() + ')',
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.black,
             fontSize: 16,
             fontWeight: FontWeight.bold,
@@ -34,7 +34,7 @@ class _CoverageListPageState extends State<CoverageListPage> {
             return ListTile(
               title: Text(
                 single.name,
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
             );
           }),

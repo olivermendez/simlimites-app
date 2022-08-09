@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class CheckImeiPage extends StatefulWidget {
-  CheckImeiPage({Key? key}) : super(key: key);
+  const CheckImeiPage({Key? key}) : super(key: key);
 
   static const String routeName = '/check-imei';
 
   static Route route() {
     return MaterialPageRoute(
       settings: const RouteSettings(name: routeName),
-      builder: (_) => CheckImeiPage(),
+      builder: (_) => const CheckImeiPage(),
     );
   }
 

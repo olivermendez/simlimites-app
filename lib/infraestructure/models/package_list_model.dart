@@ -60,7 +60,7 @@ class DatumModel extends Datum {
 }
 
 class ImageModel extends ImagePlan {
-  ImageModel({
+  const ImageModel({
     required this.width,
     required this.height,
     required this.url,
@@ -78,7 +78,7 @@ class ImageModel extends ImagePlan {
 }
 
 class OperatorModel extends Operator {
-  OperatorModel({
+  const OperatorModel({
     required this.id,
     required this.style,
     required this.gradientStart,
@@ -154,15 +154,15 @@ class OperatorModel extends Operator {
 }
 
 class CountryModel extends Country {
-  CountryModel({
+  const CountryModel({
     required this.countryCode,
     required this.title,
     required this.image,
   }) : super(countryCode: countryCode, title: title, image: image);
 
-  String countryCode;
-  String title;
-  ImageModel image;
+  final String countryCode;
+  final String title;
+  final ImageModel image;
 
   factory CountryModel.fromJson(Map<String, dynamic> json) => CountryModel(
         countryCode: json["country_code"],
@@ -172,7 +172,7 @@ class CountryModel extends Country {
 }
 
 class PackageModel extends Package {
-  PackageModel({
+  const PackageModel({
     required this.id,
     required this.type,
     required this.price,
@@ -194,15 +194,15 @@ class PackageModel extends Package {
           shortInfo: shortInfo,
         );
 
-  String id;
-  String type;
-  double price;
-  int amount;
-  int day;
-  bool isUnlimited;
-  String title;
-  String data;
-  String shortInfo;
+  final String id;
+  final String type;
+  final double price;
+  final int amount;
+  final int day;
+  final bool isUnlimited;
+  final String title;
+  final String data;
+  final String shortInfo;
 
   factory PackageModel.fromJson(Map<String, dynamic> json) => PackageModel(
         id: json["id"],
@@ -218,17 +218,17 @@ class PackageModel extends Package {
 }
 
 class LinksModel extends Links {
-  LinksModel({
+  const LinksModel({
     required this.first,
     required this.last,
     this.prev,
     this.next,
   }) : super(first: first, last: last, prev: prev, next: next);
 
-  String first;
-  String last;
-  dynamic prev;
-  dynamic next;
+  final String first;
+  final String last;
+  final dynamic prev;
+  final dynamic next;
 
   factory LinksModel.fromJson(Map<String, dynamic> json) => LinksModel(
         first: json["first"],
@@ -239,7 +239,7 @@ class LinksModel extends Links {
 }
 
 class MetaModel extends Meta {
-  MetaModel({
+  const MetaModel({
     this.message,
     this.currentPage,
     this.from,

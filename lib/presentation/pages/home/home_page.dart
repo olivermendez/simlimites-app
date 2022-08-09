@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:simlimites/presentation/pages/favorite/fav_page.dart';
+//import 'package:simlimites/presentation/pages/favorite/fav_page.dart';
 
 import '../screens.dart';
 import '../store/store_page.dart';

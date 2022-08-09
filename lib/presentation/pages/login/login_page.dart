@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:simlimites/presentation/pages/home/home_page.dart';
-import 'package:simlimites/presentation/widgets/circle.dart';
+//import 'package:simlimites/presentation/pages/home/home_page.dart';
+//import 'package:simlimites/presentation/widgets/circle.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);

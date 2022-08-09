@@ -2,20 +2,20 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:simlimites/presentation/pages/onboarding_pages/onboard_data.dart';
-import 'package:simlimites/presentation/widgets/widgets.dart';
+//import 'package:simlimites/presentation/widgets/widgets.dart';
 
-import '../home/home_page.dart';
+//import '../home/home_page.dart';
 import '../login/login_page.dart';
 
 class SplashScreen extends StatefulWidget {
-  SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({Key? key}) : super(key: key);
 
   static const String routeName = '/splash';
 
   static Route route() {
     return MaterialPageRoute(
       settings: const RouteSettings(name: routeName),
-      builder: (_) => SplashScreen(),
+      builder: (_) => const SplashScreen(),
     );
   }
 
@@ -46,12 +46,12 @@ class _SplashScreenState extends State<SplashScreen> {
         children: [
           Expanded(
             child: PageView.builder(
-              itemCount: onboard_data.length,
+              itemCount: onboardData.length,
               controller: _pageController,
               itemBuilder: (context, index) => ScreensOnBoard(
-                title: onboard_data[index].title,
-                image: onboard_data[index].image,
-                description: onboard_data[index].description,
+                title: onboardData[index].title,
+                image: onboardData[index].image,
+                description: onboardData[index].description,
               ),
             ),
           ),
@@ -63,7 +63,7 @@ class _SplashScreenState extends State<SplashScreen> {
           _pageController.nextPage(
               curve: Curves.ease, duration: const Duration(milliseconds: 300));
 
-          if (_pageController.page == onboard_data.length - 1) {
+          if (_pageController.page == onboardData.length - 1) {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const LoginPage()));
           }
