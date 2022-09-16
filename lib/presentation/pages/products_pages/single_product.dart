@@ -26,11 +26,12 @@ class _ProductPageState extends State<ProductPage> {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
+            backgroundColor: Color.fromARGB(255, 0, 57, 103),
             //foregroundColor: Colors.black,
             stretch: true,
             pinned: true,
             floating: false,
-            expandedHeight: 200,
+            expandedHeight: 50,
             flexibleSpace: FlexibleSpaceBar(
               stretchModes: const <StretchMode>[
                 StretchMode.zoomBackground,
@@ -39,8 +40,10 @@ class _ProductPageState extends State<ProductPage> {
               ],
               title: Text(
                 widget.product.title,
+                style: TextStyle(fontSize: 23),
                 //style: const TextStyle(fontSize: 30),
               ),
+              /*
               background: CachedNetworkImage(
                 imageUrl: widget.product.operators.last.image.url,
                 fit: BoxFit.cover,
@@ -48,8 +51,10 @@ class _ProductPageState extends State<ProductPage> {
                     const CircularProgressIndicator(),
                 errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
+              */
             ),
           ),
+          /*
           SliverList(
               delegate: SliverChildBuilderDelegate((context, index) {
             final info = widget.product.operators.last.info[index];
@@ -57,24 +62,52 @@ class _ProductPageState extends State<ProductPage> {
               info,
               textAlign: TextAlign.center,
             );
-          }, childCount: widget.product.operators.last.info.length)),
+          }, childCount: widget.product.operators.last.info.length)),*/
           SliverList(
               delegate: SliverChildBuilderDelegate(
             (context, index) {
               final opt = widget.product.operators.last.packages[index];
-              return Card(
-                elevation: 1,
-                child: ListTile(
-                  onTap: () {},
-                  title: Text(opt.title),
-                  trailing: Container(
-                    color: const Color.fromARGB(255, 245, 245, 245),
-                    child: Text(
-                      'US\$ ' + opt.price.toString(),
-                      style: const TextStyle(
-                          color: Color.fromARGB(255, 0, 43, 78), fontSize: 15),
-                    ),
+              return Container(
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10.0),
                   ),
+                  color: Colors.black12,
+                ),
+                margin: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
+                height: 130,
+                //color: Colors.red,
+                child: Column(
+                  children: [
+                    Text(widget.product.title + " eSIM"),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          'DATA',
+                          textAlign: TextAlign.start,
+                        ),
+                        Text(opt.data),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text('VALIDITY'),
+                        Text(opt.day.toString() + " days"),
+                      ],
+                    ),
+                    ElevatedButton(
+                        style: ButtonStyle(
+                            elevation: MaterialStateProperty.all(0),
+                            backgroundColor: MaterialStateProperty.all(
+                                Color.fromARGB(255, 0, 57, 103))),
+                        onPressed: () {},
+                        child: Text("US\$" +
+                            opt.price.toString() +
+                            ' | Comprar ahora')),
+                  ],
                 ),
               );
             },
