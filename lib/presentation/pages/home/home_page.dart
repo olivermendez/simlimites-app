@@ -47,29 +47,29 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         unselectedItemColor: const Color.fromARGB(255, 4, 45, 90),
         //unselectedLabelStyle: TextStyle(color: Colors.black),
-        iconSize: 20,
+        iconSize: 30,
         showSelectedLabels: true,
         selectedItemColor: const Color.fromARGB(255, 4, 45, 90),
-        elevation: 20,
+        elevation: 30,
         //backgroundColor: Colors.white,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.search_outlined,
+              Icons.home_rounded,
             ),
             // ignore: deprecated_member_use
-            label: 'Shop',
+            label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.sim_card_outlined,
+              Icons.sim_card_rounded,
             ),
             // ignore: deprecated_member_use
             label: 'My SIM',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.person_outlined,
+              Icons.person_rounded,
             ),
 
             // ignore: deprecated_member_use

@@ -23,6 +23,11 @@ class _ProductPageState extends State<ProductPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {},
+        label: Text("Checkout 5 Usd"),
+      ),
+      backgroundColor: const Color.fromARGB(255, 231, 246, 255),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
@@ -72,32 +77,43 @@ class _ProductPageState extends State<ProductPage> {
                   borderRadius: BorderRadius.all(
                     Radius.circular(10.0),
                   ),
-                  color: Colors.black12,
+                  color: Colors.white,
                 ),
                 margin: const EdgeInsets.all(10.0),
                 padding: const EdgeInsets.all(10.0),
-                height: 130,
+                height: 70,
                 //color: Colors.red,
                 child: Column(
                   children: [
-                    Text(widget.product.title + " eSIM"),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text(
-                          'DATA',
+                          opt.data,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
                           textAlign: TextAlign.start,
                         ),
-                        Text(opt.data),
+                        Text(
+                          opt.price.toString() + " USD",
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
                       ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text('VALIDITY'),
                         Text(opt.day.toString() + " days"),
+                        Text(opt.price.toString() + " / GB"),
                       ],
                     ),
+
+                    /*
                     ElevatedButton(
                         style: ButtonStyle(
                             elevation: MaterialStateProperty.all(0),
@@ -107,12 +123,47 @@ class _ProductPageState extends State<ProductPage> {
                         child: Text("US\$" +
                             opt.price.toString() +
                             ' | Comprar ahora')),
+
+                            */
                   ],
                 ),
               );
             },
             childCount: widget.product.operators.last.packages.length,
           )),
+          SliverToBoxAdapter(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Expanded(
+                    child: ListTile(
+                  onTap: () {},
+                  dense: true,
+                  leading: const Icon(
+                    Icons.help,
+                    size: 20,
+                  ),
+                  title: const Text(
+                    'About eSIM',
+                    textAlign: TextAlign.center,
+                  ),
+                )),
+                Expanded(
+                    child: ListTile(
+                  onTap: () {},
+                  leading: const Icon(
+                    Icons.help,
+                    size: 20,
+                  ),
+                  dense: true,
+                  title: const Text(
+                    'Instructions',
+                    textAlign: TextAlign.center,
+                  ),
+                )),
+              ],
+            ),
+          ),
         ],
       ),
     );

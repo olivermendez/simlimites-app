@@ -32,6 +32,7 @@ class _LocalSimDisplayState extends State<LocalSimDisplay> {
     //local = data.where((element) => element.productType == 'local').toList();
 
     return Scaffold(
+      backgroundColor: Color.fromRGBO(245, 245, 247, 1),
       body: FutureBuilder(
         future: _ds.getOperatorsByCountry(),
         builder: (context, AsyncSnapshot<List<DatumModel>> snapshot) {
@@ -79,21 +80,25 @@ class _ListOfPlansState extends State<ListOfPlans> {
     );
   }
 
-  Card packagesCard(DatumModel package) {
-    return Card(
-      elevation: 0,
-      child: ListTile(
-        trailing: const Icon(
-          Icons.arrow_forward_ios_rounded,
-          size: 18,
-        ),
-        leading: flagIconWidget(image: package.image),
-        title: Text(
-          package.title,
-          style: const TextStyle(
-              color: Color.fromARGB(255, 0, 43, 78),
-              fontWeight: FontWeight.bold,
-              fontSize: 18),
+  Padding packagesCard(DatumModel package) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 20, right: 20),
+      child: Card(
+        elevation: 0,
+        child: ListTile(
+          //subtitle: Text('6 plans'),
+          trailing: const Icon(
+            Icons.arrow_forward_ios_rounded,
+            size: 18,
+          ),
+          leading: flagIconWidget(image: package.image),
+          title: Text(
+            package.title,
+            style: const TextStyle(
+                color: Color.fromARGB(255, 0, 43, 78),
+                fontWeight: FontWeight.bold,
+                fontSize: 18),
+          ),
         ),
       ),
     );
