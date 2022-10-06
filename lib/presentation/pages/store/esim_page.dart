@@ -21,7 +21,7 @@ class _LocalSimDisplayState extends State<LocalSimDisplay> {
   void initState() {
     super.initState();
     _ds.getOperatorsByCountry();
-    print('object');
+    //print('object');
   }
 
   //final List<SimCountries> data = DataServices.countriesList.toList();
@@ -32,7 +32,7 @@ class _LocalSimDisplayState extends State<LocalSimDisplay> {
     //local = data.where((element) => element.productType == 'local').toList();
 
     return Scaffold(
-      backgroundColor: Color.fromRGBO(245, 245, 247, 1),
+      backgroundColor: const Color.fromRGBO(245, 245, 247, 1),
       body: FutureBuilder(
         future: _ds.getOperatorsByCountry(),
         builder: (context, AsyncSnapshot<List<DatumModel>> snapshot) {
@@ -82,9 +82,9 @@ class _ListOfPlansState extends State<ListOfPlans> {
 
   Padding packagesCard(DatumModel package) {
     return Padding(
-      padding: const EdgeInsets.only(left: 20, right: 20),
+      padding: const EdgeInsets.only(left: 5, right: 5),
       child: Card(
-        elevation: 0,
+        elevation: 1,
         child: ListTile(
           //subtitle: Text('6 plans'),
           trailing: const Icon(

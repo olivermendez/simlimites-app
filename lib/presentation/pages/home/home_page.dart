@@ -45,12 +45,11 @@ class _HomePageState extends State<HomePage> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        unselectedItemColor: const Color.fromARGB(255, 4, 45, 90),
-        //unselectedLabelStyle: TextStyle(color: Colors.black),
-        iconSize: 30,
+        iconSize: 20,
+        backgroundColor: Colors.white,
         showSelectedLabels: true,
-        selectedItemColor: const Color.fromARGB(255, 4, 45, 90),
-        elevation: 30,
+        //selectedItemColor: const Color.fromARGB(255, 4, 45, 90),
+        elevation: 5,
         //backgroundColor: Colors.white,
         items: const [
           BottomNavigationBarItem(

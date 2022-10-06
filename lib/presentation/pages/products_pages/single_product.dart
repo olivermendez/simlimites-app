@@ -1,6 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:simlimites/infraestructure/models/package_list_model.dart';
+
+import '../../../navigator.utils.dart';
+import '../order/your_order_page.dart';
 //import 'package:simlimites/presentation/pages/products_pages/coverage_page.dart';
 //import '../../../models/sim/esim_models.dart';
 //import '../../widgets/widgets.dart';
@@ -25,18 +28,19 @@ class _ProductPageState extends State<ProductPage> {
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {},
-        label: Text("Checkout 5 Usd"),
+        label: const Text("Checkout 5 Usd"),
       ),
       backgroundColor: const Color.fromARGB(255, 231, 246, 255),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
-            backgroundColor: Color.fromARGB(255, 0, 57, 103),
+            centerTitle: false,
+            backgroundColor: const Color.fromARGB(255, 0, 57, 103),
             //foregroundColor: Colors.black,
             stretch: true,
             pinned: true,
             floating: false,
-            expandedHeight: 50,
+            expandedHeight: 200,
             flexibleSpace: FlexibleSpaceBar(
               stretchModes: const <StretchMode>[
                 StretchMode.zoomBackground,
@@ -45,10 +49,9 @@ class _ProductPageState extends State<ProductPage> {
               ],
               title: Text(
                 widget.product.title,
-                style: TextStyle(fontSize: 23),
+                style: const TextStyle(fontSize: 20),
                 //style: const TextStyle(fontSize: 30),
               ),
-              /*
               background: CachedNetworkImage(
                 imageUrl: widget.product.operators.last.image.url,
                 fit: BoxFit.cover,
@@ -56,7 +59,6 @@ class _ProductPageState extends State<ProductPage> {
                     const CircularProgressIndicator(),
                 errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
-              */
             ),
           ),
           /*
@@ -72,60 +74,73 @@ class _ProductPageState extends State<ProductPage> {
               delegate: SliverChildBuilderDelegate(
             (context, index) {
               final opt = widget.product.operators.last.packages[index];
-              return Container(
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(10.0),
+              return InkWell(
+                onTap: () {
+                  pushToPage(
+                      context,
+                      YourOrderPage(
+                        selected: opt,
+                        plan: widget.product,
+                        flag: widget.product.image,
+                      ));
+                },
+                child: Card(
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10.0),
+                      ),
+                      color: Colors.white,
+                    ),
+                    //margin: const EdgeInsets.all(10.0),
+                    padding: const EdgeInsets.all(10.0),
+                    height: 70,
+                    //color: Colors.red,
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(
+                              opt.data,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
+                              textAlign: TextAlign.start,
+                            ),
+                            Text(
+                              opt.price.toString() + " USD",
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(opt.day.toString() + " days"),
+                            Text(opt.price.toString() + " / GB"),
+                          ],
+                        ),
+
+                        /*
+                        ElevatedButton(
+                            style: ButtonStyle(
+                                elevation: MaterialStateProperty.all(0),
+                                backgroundColor: MaterialStateProperty.all(
+                                    Color.fromARGB(255, 0, 57, 103))),
+                            onPressed: () {},
+                            child: Text("US\$" +
+                                opt.price.toString() +
+                                ' | Comprar ahora')),
+                
+                                */
+                      ],
+                    ),
                   ),
-                  color: Colors.white,
-                ),
-                margin: const EdgeInsets.all(10.0),
-                padding: const EdgeInsets.all(10.0),
-                height: 70,
-                //color: Colors.red,
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(
-                          opt.data,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                          ),
-                          textAlign: TextAlign.start,
-                        ),
-                        Text(
-                          opt.price.toString() + " USD",
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(opt.day.toString() + " days"),
-                        Text(opt.price.toString() + " / GB"),
-                      ],
-                    ),
-
-                    /*
-                    ElevatedButton(
-                        style: ButtonStyle(
-                            elevation: MaterialStateProperty.all(0),
-                            backgroundColor: MaterialStateProperty.all(
-                                Color.fromARGB(255, 0, 57, 103))),
-                        onPressed: () {},
-                        child: Text("US\$" +
-                            opt.price.toString() +
-                            ' | Comprar ahora')),
-
-                            */
-                  ],
                 ),
               );
             },
