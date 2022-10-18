@@ -18,6 +18,7 @@ class AccountPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        //backgroundColor: const Color.fromARGB(255, 214, 229, 233),
         appBar: normalAppBar('Mi cuenta'),
         body: ListView(
           children: [
@@ -52,16 +53,17 @@ class AccountPage extends StatelessWidget {
                   name: 'Validar IMEI',
                   destination: '/check-imei',
                 ),
+                listtileWidget(
+                  context,
+                  name: 'How to install eSIM',
+                  destination: '/check-imei',
+                ),
                 const Divider(
                   height: 25,
                 ),
                 //Configuración de la cuenta
                 textWidget('Configuración de la cuenta'),
-                listtileWidget(
-                  context,
-                  name: 'Direcciones de envío',
-                  destination: '/error',
-                ),
+
                 listtileWidget(context,
                     name: 'Cambiar a cuenta corporativa',
                     destination: '/serror'),

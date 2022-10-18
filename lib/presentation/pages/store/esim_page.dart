@@ -82,9 +82,9 @@ class _ListOfPlansState extends State<ListOfPlans> {
 
   Padding packagesCard(DatumModel package) {
     return Padding(
-      padding: const EdgeInsets.only(left: 5, right: 5),
+      padding: const EdgeInsets.only(left: 3, right: 3),
       child: Card(
-        elevation: 1,
+        elevation: 0,
         child: ListTile(
           //subtitle: Text('6 plans'),
           trailing: const Icon(

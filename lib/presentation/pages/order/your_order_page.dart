@@ -21,26 +21,32 @@ class _YourOrderPageState extends State<YourOrderPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 229, 244, 255),
       appBar: AppBar(
-        elevation: 1,
+        elevation: 0,
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
         title: const Text("Payment"),
       ),
       body: Column(
         children: [
-          const Text("Data Plan chosed"),
-          Card(
-            elevation: 5,
+          Row(
+            children: const [
+              Padding(
+                padding: EdgeInsets.only(left: 20.0, top: 20, right: 20),
+                child: Text("Choose data plan"),
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 20.0, top: 10, right: 20),
             child: Container(
-              margin: const EdgeInsets.all(10.0),
-              padding: const EdgeInsets.all(10.0),
+              //margin: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(20.0),
               //height: 120,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(20.0),
-                ),
-                //color: Color.fromARGB(255, 217, 217, 217),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                color: Colors.white,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,7 +58,24 @@ class _YourOrderPageState extends State<YourOrderPage> {
                       flagIconWidget(image: widget.flag),
                       Padding(
                         padding: const EdgeInsets.only(left: 10),
-                        child: Text(widget.plan.title),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              widget.plan.title,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 17,
+                              ),
+                            ),
+                            const Text(
+                              "country",
+                              style: TextStyle(
+                                color: Color.fromARGB(255, 34, 34, 34),
+                              ),
+                            ),
+                          ],
+                        ),
                       )
                     ],
                   ),
@@ -60,10 +83,15 @@ class _YourOrderPageState extends State<YourOrderPage> {
                   Text(
                     widget.selected.data,
                     style: const TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold),
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   Text(
                     "Valid for " + widget.selected.day.toString() + " days",
+                    style: const TextStyle(
+                      color: Color.fromARGB(255, 34, 34, 34),
+                    ),
                   ),
                 ],
               ),

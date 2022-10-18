@@ -14,7 +14,7 @@ export 'onboarding_pages/onboarding.dart';
 export 'account/account_page.dart';
 
 //my sim profile
-export 'mysim/my_sim.dart';
+export 'mysim/my_esim.dart';
 
 //home
 export 'home/home_page.dart';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:simlimites/models/sim/esim_models.dart';
 
+// ignore: must_be_immutable
 class CoverageListPage extends StatefulWidget {
   CoverageListPage({Key? key, required this.coverage}) : super(key: key);
 

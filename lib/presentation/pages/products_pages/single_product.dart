@@ -1,13 +1,9 @@
-import 'package:cached_network_image/cached_network_image.dart';
+//import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:simlimites/infraestructure/models/package_list_model.dart';
 
 import '../../../navigator.utils.dart';
 import '../order/your_order_page.dart';
-//import 'package:simlimites/presentation/pages/products_pages/coverage_page.dart';
-//import '../../../models/sim/esim_models.dart';
-//import '../../widgets/widgets.dart';
-//import '../../widgets/date_picker.dart';
 
 // ignore: must_be_immutable
 class ProductPage extends StatefulWidget {
@@ -25,22 +21,53 @@ class ProductPage extends StatefulWidget {
 class _ProductPageState extends State<ProductPage> {
   @override
   Widget build(BuildContext context) {
+    bool isExtended = false;
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
-        label: const Text("Checkout 5 Usd"),
-      ),
+          elevation: 0,
+          onPressed: () {},
+          label: AnimatedSwitcher(
+            duration: const Duration(seconds: 1),
+            transitionBuilder: (Widget child, Animation<double> animation) =>
+                FadeTransition(
+              opacity: animation,
+              child: SizeTransition(
+                child: child,
+                sizeFactor: animation,
+                axis: Axis.horizontal,
+              ),
+            ),
+            child: isExtended
+                ? Icon(Icons.arrow_forward)
+                : Row(
+                    children: const [
+                      Padding(
+                        padding: EdgeInsets.only(right: 4.0),
+                        child: Icon(Icons.add),
+                      ),
+                      Text("Add To Order")
+                    ],
+                  ),
+          )),
       backgroundColor: const Color.fromARGB(255, 231, 246, 255),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
+            actions: [
+              Padding(
+                padding: const EdgeInsets.only(right: 10),
+                child: Image.network(
+                  widget.product.image.url,
+                  scale: 3.0,
+                ),
+              ),
+            ],
             centerTitle: false,
             backgroundColor: const Color.fromARGB(255, 0, 57, 103),
-            //foregroundColor: Colors.black,
             stretch: true,
             pinned: true,
             floating: false,
-            expandedHeight: 200,
+            expandedHeight: 250,
             flexibleSpace: FlexibleSpaceBar(
               stretchModes: const <StretchMode>[
                 StretchMode.zoomBackground,
@@ -52,6 +79,7 @@ class _ProductPageState extends State<ProductPage> {
                 style: const TextStyle(fontSize: 20),
                 //style: const TextStyle(fontSize: 30),
               ),
+              /*
               background: CachedNetworkImage(
                 imageUrl: widget.product.operators.last.image.url,
                 fit: BoxFit.cover,
@@ -59,6 +87,7 @@ class _ProductPageState extends State<ProductPage> {
                     const CircularProgressIndicator(),
                 errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
+              */
             ),
           ),
           /*
@@ -70,6 +99,26 @@ class _ProductPageState extends State<ProductPage> {
               textAlign: TextAlign.center,
             );
           }, childCount: widget.product.operators.last.info.length)),*/
+          SliverToBoxAdapter(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Padding(
+                  padding: EdgeInsets.only(top: 20.0, left: 20),
+                  child: Text("Choose data plan"),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 20.0, right: 23),
+                  child: Text(
+                    "USD",
+                    style: TextStyle(
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
           SliverList(
               delegate: SliverChildBuilderDelegate(
             (context, index) {
@@ -77,26 +126,30 @@ class _ProductPageState extends State<ProductPage> {
               return InkWell(
                 onTap: () {
                   pushToPage(
-                      context,
-                      YourOrderPage(
-                        selected: opt,
-                        plan: widget.product,
-                        flag: widget.product.image,
-                      ));
+                    context,
+                    YourOrderPage(
+                      selected: opt,
+                      plan: widget.product,
+                      flag: widget.product.image,
+                    ),
+                  );
                 },
-                child: Card(
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    left: 20.0,
+                    right: 20.0,
+                    top: 10,
+                  ),
                   child: Container(
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10.0),
-                      ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
                       color: Colors.white,
                     ),
-                    //margin: const EdgeInsets.all(10.0),
-                    padding: const EdgeInsets.all(10.0),
-                    height: 70,
+
+                    height: 80,
                     //color: Colors.red,
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -125,19 +178,6 @@ class _ProductPageState extends State<ProductPage> {
                             Text(opt.price.toString() + " / GB"),
                           ],
                         ),
-
-                        /*
-                        ElevatedButton(
-                            style: ButtonStyle(
-                                elevation: MaterialStateProperty.all(0),
-                                backgroundColor: MaterialStateProperty.all(
-                                    Color.fromARGB(255, 0, 57, 103))),
-                            onPressed: () {},
-                            child: Text("US\$" +
-                                opt.price.toString() +
-                                ' | Comprar ahora')),
-                
-                                */
                       ],
                     ),
                   ),
@@ -146,38 +186,8 @@ class _ProductPageState extends State<ProductPage> {
             },
             childCount: widget.product.operators.last.packages.length,
           )),
-          SliverToBoxAdapter(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Expanded(
-                    child: ListTile(
-                  onTap: () {},
-                  dense: true,
-                  leading: const Icon(
-                    Icons.help,
-                    size: 20,
-                  ),
-                  title: const Text(
-                    'About eSIM',
-                    textAlign: TextAlign.center,
-                  ),
-                )),
-                Expanded(
-                    child: ListTile(
-                  onTap: () {},
-                  leading: const Icon(
-                    Icons.help,
-                    size: 20,
-                  ),
-                  dense: true,
-                  title: const Text(
-                    'Instructions',
-                    textAlign: TextAlign.center,
-                  ),
-                )),
-              ],
-            ),
+          const SliverToBoxAdapter(
+            child: AboutAndInstructionsWidget(),
           ),
         ],
       ),
@@ -185,108 +195,43 @@ class _ProductPageState extends State<ProductPage> {
   }
 }
 
-// ignore: must_be_immutable
-class ProductInfo extends StatefulWidget {
-  ProductInfo({Key? key, required this.product}) : super(key: key);
+class AboutAndInstructionsWidget extends StatelessWidget {
+  const AboutAndInstructionsWidget({Key? key}) : super(key: key);
 
-  DatumModel product;
-
-  @override
-  State<ProductInfo> createState() => _ProductInfoState();
-}
-
-class _ProductInfoState extends State<ProductInfo> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(15.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            widget.product.title,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 30,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Expanded(
+          child: ListTile(
+            onTap: () {},
+            dense: true,
+            leading: const Icon(
+              Icons.help,
+              size: 20,
+            ),
+            title: const Text(
+              'About eSIM',
+              textAlign: TextAlign.left,
             ),
           ),
-          Text(
-            widget.product.slug,
-            style: const TextStyle(
-              fontWeight: FontWeight.w400,
-              fontSize: 18,
+        ),
+        Expanded(
+          child: ListTile(
+            onTap: () {},
+            leading: const Icon(
+              Icons.help,
+              size: 20,
+            ),
+            dense: true,
+            title: const Text(
+              'Instructions',
+              textAlign: TextAlign.left,
             ),
           ),
-          const Divider(
-            height: 10,
-          ),
-          Card(
-            child: ListTile(
-              onTap: () {},
-              focusColor: Colors.white,
-              title: const Text('Paises disponibles'),
-              leading: const Icon(Icons.public_outlined),
-              trailing: const Icon(Icons.arrow_forward_ios_outlined),
-            ),
-          ),
-          const Divider(
-            height: 10,
-          ),
-
-          /*
-          const Text(
-            "fecha de activacion",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 15,
-            ),
-          ),
-          DateRangeWidget(),
-          const Divider(
-            height: 10,
-            color: Colors.transparent,
-          ),
-          */
-        ],
-      ),
-    );
-  }
-}
-
-class ShowOperatorInfo extends StatefulWidget {
-  final OperatorModel operatorInfo;
-  ShowOperatorInfo({required this.operatorInfo, Key? key}) : super(key: key);
-
-  @override
-  State<ShowOperatorInfo> createState() => _ShowOperatorInfoState();
-}
-
-class _ShowOperatorInfoState extends State<ShowOperatorInfo> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
-
-class ShowPackages extends StatefulWidget {
-  final List<PackageModel> packages;
-  ShowPackages({required this.packages, Key? key}) : super(key: key);
-
-  @override
-  State<ShowPackages> createState() => _ShowPackagesState();
-}
-
-class _ShowPackagesState extends State<ShowPackages> {
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: widget.packages.length,
-      itemBuilder: (context, index) {
-        final single = widget.packages[index];
-        return ListTile(
-          title: Text(single.title),
-        );
-      },
+        ),
+      ],
     );
   }
 }
